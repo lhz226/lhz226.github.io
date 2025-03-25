@@ -3,621 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>星际漫游者 - 宇宙视角下的思考</title>
-    <style>
-        /* 基础样式 - 继承太阳系模拟器的黑暗主题 */
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-            color: #e0e0e0;
-            overflow-x: hidden;
-            background: transparent;
-        }
-        
-        /* 星空背景容器 */
-        #universe-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-        
-        /* 主内容区域 */
-        #content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-            position: relative;
-        }
-        
-        /* 玻璃态设计元素 */
-        .glass-panel {
-            background: rgba(15, 23, 42, 0.7);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
-            padding: 2rem;
-            margin-bottom: 2rem;
-            transition: all 0.3s ease;
-        }
-        
-        .glass-panel:hover {
-            background: rgba(15, 23, 42, 0.85);
-            box-shadow: 0 8px 32px 0 rgba(81, 203, 238, 0.3);
-        }
-        
-        /* 标题样式 */
-        h1, h2, h3 {
-            color: #51cbee;
-            text-shadow: 0 0 10px rgba(81, 203, 238, 0.5);
-            font-weight: 300;
-            letter-spacing: 1px;
-        }
-        
-        h1 {
-            font-size: 3.5rem;
-            margin-bottom: 0.5rem;
-            background: linear-gradient(90deg, #51cbee, #8a7af8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        h2 {
-            font-size: 2.2rem;
-            margin-top: 2rem;
-            border-bottom: 1px solid rgba(81, 203, 238, 0.3);
-            padding-bottom: 0.5rem;
-        }
-        
-        h3 {
-            font-size: 1.8rem;
-            color: #8a7af8;
-        }
-        
-        /* 导航栏 */
-        #navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(5, 10, 24, 0.85);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(81, 203, 238, 0.2);
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
-        
-        .nav-links a {
-            color: #e0e0e0;
-            text-decoration: none;
-            font-size: 1.1rem;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            position: relative;
-            padding: 0.5rem 0;
-        }
-        
-        .nav-links a:hover {
-            color: #51cbee;
-        }
-        
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #51cbee;
-            transition: width 0.3s ease;
-        }
-        
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-        
-        /* 文章卡片 */
-        .article-card {
-            display: flex;
-            gap: 2rem;
-            margin-bottom: 2rem;
-            align-items: center;
-        }
-        
-        .article-card:hover .article-image {
-            transform: scale(1.05);
-            box-shadow: 0 0 30px rgba(81, 203, 238, 0.3);
-        }
-        
-        .article-image {
-            min-width: 300px;
-            height: 200px;
-            border-radius: 10px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(81, 203, 238, 0.3);
-        }
-        
-        .article-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .article-content {
-            flex: 1;
-        }
-        
-        .article-meta {
-            display: flex;
-            gap: 1rem;
-            color: #8a7af8;
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .article-title {
-            font-size: 1.8rem;
-            margin: 0.5rem 0;
-            color: #51cbee;
-        }
-        
-        .article-excerpt {
-            line-height: 1.6;
-            margin-bottom: 1rem;
-        }
-        
-        .read-more {
-            color: #8a7af8;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-        
-        .read-more:hover {
-            color: #51cbee;
-            text-shadow: 0 0 10px rgba(81, 203, 238, 0.3);
-        }
-        
-        /* 关于我部分 */
-        #about {
-            display: flex;
-            gap: 3rem;
-            align-items: center;
-        }
-        
-        .avatar {
-            min-width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 3px solid rgba(81, 203, 238, 0.3);
-            box-shadow: 0 0 30px rgba(81, 203, 238, 0.2);
-        }
-        
-        .avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        /* 页脚 */
-        footer {
-            text-align: center;
-            padding: 2rem;
-            margin-top: 3rem;
-            color: #666;
-            font-size: 0.9rem;
-            border-top: 1px solid rgba(81, 203, 238, 0.1);
-        }
-        
-        /* 响应式设计 */
-        @media (max-width: 768px) {
-            #navbar {
-                flex-direction: column;
-                padding: 1rem;
-            }
-            
-            .nav-links {
-                margin-top: 1rem;
-                gap: 1rem;
-            }
-            
-            h1 {
-                font-size: 2.5rem;
-            }
-            
-            .article-card {
-                flex-direction: column;
-            }
-            
-            .article-image {
-                width: 100%;
-                min-width: auto;
-            }
-            
-            #about {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
-        
-        /* 特殊效果 */
-        .cosmic-highlight {
-            position: relative;
-            display: inline-block;
-        }
-        
-        .cosmic-highlight::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -5px;
-            right: -5px;
-            bottom: -2px;
-            z-index: -1;
-            background: linear-gradient(90deg, rgba(81, 203, 238, 0.3), rgba(138, 122, 248, 0.3));
-            border-radius: 3px;
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.3s ease;
-        }
-        
-        .cosmic-highlight:hover::before {
-            transform: scaleX(1);
-        }
-        
-        /* 星际粒子效果 */
-        .star {
-            position: absolute;
-            background-color: #fff;
-            border-radius: 50%;
-            animation: twinkle var(--duration) infinite ease-in-out;
-        }
-        
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.2; }
-            50% { opacity: 1; }
-        }
-    </style>
+    <title>星辰博客 | DeepSeek生成</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <!-- 太阳系背景 -->
-    <div id="universe-container"></div>
+    <!-- 太阳系背景画布 -->
+    <canvas id="solarCanvas"></canvas>
     
-    <!-- 导航栏 -->
-    <div id="navbar" class="glass-panel">
-        <h1>星际漫游者</h1>
-        <div class="nav-links">
-            <a href="#home">首页</a>
-            <a href="#articles">文章</a>
-            <a href="#about">关于</a>
-            <a href="#contact">联系</a>
-        </div>
+    <!-- 主容器 -->
+    <div class="container">
+        <!-- 头部 -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="blog-title">星辰博客</h1>
+                <nav class="nav">
+                    <a href="#" class="nav-link active">首页</a>
+                    <a href="#" class="nav-link">归档</a>
+                    <a href="#" class="nav-link">关于</a>
+                    <div class="theme-toggle">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <!-- 主要内容 -->
+        <main class="main-content">
+            <article class="blog-post">
+                <div class="post-header">
+                    <h2 class="post-title">如何使用DeepSeek创建这个太空主题博客</h2>
+                    <div class="post-meta">
+                        <span class="post-date"><i class="far fa-calendar-alt"></i> 2023-11-15</span>
+                        <span class="post-category"><i class="fas fa-tag"></i> 技术</span>
+                    </div>
+                </div>
+                <div class="post-content">
+                    <p>欢迎来到我的星辰博客！这个独特的太空主题博客完全由DeepSeek AI生成，下面我将分享创建过程。</p>
+                    
+                    <h3>1. 构思阶段</h3>
+                    <p>首先，我向DeepSeek提出了以下需求：</p>
+                    <ul>
+                        <li>创建一个以太阳系为背景的个人博客</li>
+                        <li>要求深色主题，现代化设计</li>
+                        <li>包含标题区、文章区和页脚</li>
+                        <li>能够在GitHub Pages上部署</li>
+                    </ul>
+                    
+                    <h3>2. 技术实现</h3>
+                    <p>DeepSeek为我生成了完整的项目结构：</p>
+                    <pre><code>solar-blog/
+├── index.html
+├── css/
+│   └── style.css
+├── js/
+│   ├── solar-system.js
+│   └── blog.js
+└── assets/
+    └── deepseek-logo.png</code></pre>
+                    
+                    <h3>3. 核心功能</h3>
+                    <p>博客包含以下亮点功能：</p>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon"><i class="fas fa-globe"></i></div>
+                            <h4>3D太阳系背景</h4>
+                            <p>使用Canvas实现的动态太阳系，行星沿轨道运行</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon"><i class="fas fa-moon"></i></div>
+                            <h4>深色主题</h4>
+                            <p>护眼的深色设计，可切换主题</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+                            <h4>响应式布局</h4>
+                            <p>完美适配各种设备屏幕</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon"><i class="fas fa-rocket"></i></div>
+                            <h4>现代化UI</h4>
+                            <p>简洁美观的界面设计</p>
+                        </div>
+                    </div>
+                    
+                    <h3>4. 部署到GitHub Pages</h3>
+                    <p>DeepSeek还提供了部署指南：</p>
+                    <ol>
+                        <li>在GitHub创建新仓库</li>
+                        <li>将所有文件推送到仓库</li>
+                        <li>在仓库设置中启用GitHub Pages</li>
+                        <li>选择main分支作为源</li>
+                    </ol>
+                    
+                    <p>就这样，一个完整的太空主题博客就诞生了！整个过程只用了不到10分钟，感谢DeepSeek的强大能力。</p>
+                    
+                    <div class="post-footer">
+                        <div class="tags">
+                            <span class="tag">#DeepSeek</span>
+                            <span class="tag">#AI生成</span>
+                            <span class="tag">#前端开发</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </main>
+
+        <!-- 页脚 -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span> 由DeepSeek生成</span>
+                </div>
+                <div class="footer-links">
+                    <a href="#" class="footer-link"><i class="fab fa-github"></i> GitHub</a>
+                    <a href="#" class="footer-link"><i class="fab fa-twitter"></i> Twitter</a>
+                    <a href="#" class="footer-link"><i class="fas fa-envelope"></i> 联系</a>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                &copy; 2023 星辰博客. 保留所有权利.
+            </div>
+        </footer>
     </div>
-    
-    <!-- 主内容区 -->
-    <div id="content">
-        <!-- 英雄区域 -->
-        <section id="home" class="glass-panel">
-            <h2>在浩瀚宇宙中寻找真理的微光</h2>
-            <p>欢迎来到我的星际空间站，这里记录着我在科技、哲学与艺术交汇处的思考与探索。每一篇文章都是我在知识宇宙中的一次航行，每一次思考都是对未知世界的一次观测。</p>
-            <p>正如<span class="cosmic-highlight">卡尔·萨根</span>所说："在某个地方，有些令人难以置信的事情正等待着被发现。"</p>
-        </section>
-        
-        <!-- 精选文章 -->
-        <section id="articles" class="glass-panel">
-            <h2>星际日志</h2>
-            
-            <div class="article-card">
-                <div class="article-image">
-                    <img src="https://images.unsplash.com/photo-1454789548928-9efd52dc4031?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="量子宇宙">
-                </div>
-                <div class="article-content">
-                    <div class="article-meta">
-                        <span>2023-10-15</span>
-                        <span>量子物理</span>
-                        <span>12分钟阅读</span>
-                    </div>
-                    <h3 class="article-title">量子纠缠与宇宙意识</h3>
-                    <p class="article-excerpt">探索量子纠缠现象如何暗示宇宙可能是一个巨大的全息图，以及这对人类意识意味着什么。从爱因斯坦的"幽灵般的超距作用"到现代量子计算，我们正在揭开宇宙最基本的运作机制...</p>
-                    <a href="#" class="read-more">继续星际航行 →</a>
-                </div>
-            </div>
-            
-            <div class="article-card">
-                <div class="article-image">
-                    <img src="https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="AI与未来">
-                </div>
-                <div class="article-content">
-                    <div class="article-meta">
-                        <span>2023-09-28</span>
-                        <span>人工智能</span>
-                        <span>15分钟阅读</span>
-                    </div>
-                    <h3 class="article-title">后人类时代：当AI成为星际文明的信使</h3>
-                    <p class="article-excerpt">人工智能不仅是地球上的技术革命，更可能是人类向星际文明过渡的关键。从图灵测试到神经形态计算，我们正在创造可能比我们更适合在宇宙中传播的智能形式...</p>
-                    <a href="#" class="read-more">继续星际航行 →</a>
-                </div>
-            </div>
-            
-            <div class="article-card">
-                <div class="article-image">
-                    <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="宇宙艺术">
-                </div>
-                <div class="article-content">
-                    <div class="article-meta">
-                        <span>2023-08-12</span>
-                        <span>宇宙艺术</span>
-                        <span>10分钟阅读</span>
-                    </div>
-                    <h3 class="article-title">曼德勃罗特集合：数学中的宇宙美学</h3>
-                    <p class="article-excerpt">在简单的复数迭代公式中，隐藏着无限复杂的宇宙图景。分形几何不仅存在于数学中，也存在于星系分布、海岸线形状和人类血管系统中。这是否暗示着宇宙的本质是分形的？...</p>
-                    <a href="#" class="read-more">继续星际航行 →</a>
-                </div>
-            </div>
-        </section>
-        
-        <!-- 关于我 -->
-        <section id="about" class="glass-panel">
-            <div class="avatar">
-                <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="星际漫游者">
-            </div>
-            <div class="about-content">
-                <h2>关于星际漫游者</h2>
-                <p>我是<span class="cosmic-highlight">Alex</span>，一名跨学科研究者，在量子计算、人工智能和宇宙学之间寻找连接点。拥有理论物理学博士学位，曾在CERN和NASA从事研究工作。</p>
-                <p>我相信科学和人文的融合是理解宇宙的关键。当不写代码或解方程时，我会用钢琴演奏星空的声音，或者用画笔描绘多维宇宙的图景。</p>
-                <p>这个博客是我在浩瀚知识宇宙中的航行日志，记录着那些让我惊叹的发现和思考。</p>
-            </div>
-        </section>
-        
-        <!-- 联系 -->
-        <section id="contact" class="glass-panel">
-            <h2>星际通讯</h2>
-            <p>如果你想讨论任何关于宇宙、科技或未来的话题，或者只是想分享你对星空的热爱，请通过以下方式联系我：</p>
-            <p>Email: <a href="mailto:explorer@cosmicvoyager.com" style="color: #8a7af8;">explorer@cosmicvoyager.com</a></p>
-            <p>或者通过星际量子通讯网络(社交媒体)：</p>
-            <!-- 这里可以添加社交媒体图标 -->
-        </section>
-    </div>
-    
-    <footer>
-        <p>© 2023 星际漫游者 | 由星辰与代码驱动</p>
-    </footer>
-    
-    <!-- 引入Three.js和太阳系脚本 -->
-    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/controls/OrbitControls.js"></script>
-    <script>
-        // 初始化太阳系背景
-        let scene, camera, renderer, controls;
-        let planets = [];
-        let speed = 0.5; // 较慢的背景速度
-        
-        function initUniverse() {
-            // 创建场景
-            scene = new THREE.Scene();
-            
-            // 创建相机
-            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 10000);
-            camera.position.set(0, 200, 500);
-            
-            // 创建渲染器
-            renderer = new THREE.WebGLRenderer({ 
-                antialias: true,
-                alpha: true
-            });
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            renderer.setPixelRatio(window.devicePixelRatio);
-            document.getElementById('universe-container').appendChild(renderer.domElement);
-            
-            // 添加轨道控制器，但禁用用户交互
-            controls = new THREE.OrbitControls(camera, renderer.domElement);
-            controls.enableDamping = true;
-            controls.dampingFactor = 0.05;
-            controls.minDistance = 100;
-            controls.maxDistance = 2000;
-            controls.enableZoom = false;
-            controls.enablePan = false;
-            controls.enableRotate = false;
-            
-            // 自动旋转
-            controls.autoRotate = true;
-            controls.autoRotateSpeed = 0.5;
-            
-            // 添加光源
-            addLights();
-            
-            // 创建太阳系
-            createSolarSystem();
-            
-            // 添加星空背景
-            createStarfield();
-            
-            // 窗口大小调整
-            window.addEventListener('resize', onWindowResize);
-            
-            // 开始动画
-            animate();
-        }
-        
-        function addLights() {
-            // 环境光
-            const ambientLight = new THREE.AmbientLight(0x333333);
-            scene.add(ambientLight);
-            
-            // 太阳光 (强光源)
-            const sunLight = new THREE.PointLight(0xffffff, 1.5, 1000);
-            sunLight.position.set(0, 0, 0);
-            scene.add(sunLight);
-            
-            // 添加辉光效果
-            const sunGlow = new THREE.PointLight(0xffaa33, 0.8, 500);
-            sunGlow.position.set(0, 0, 0);
-            scene.add(sunGlow);
-        }
-        
-        function createSolarSystem() {
-            // 创建太阳
-            const sunGeometry = new THREE.SphereGeometry(15, 32, 32);
-            const sunMaterial = new THREE.MeshBasicMaterial({
-                color: 0xffff00,
-                emissive: 0xffaa33,
-                emissiveIntensity: 0.8
-            });
-            const sun = new THREE.Mesh(sunGeometry, sunMaterial);
-            scene.add(sun);
-            
-            // 行星数据 (大小, 轨道半径, 轨道周期, 颜色)
-            const planetData = [
-                { size: 2, distance: 30, period: 88, color: 0xaaaaaa },
-                { size: 3, distance: 50, period: 225, color: 0xffcc99 },
-                { size: 3, distance: 70, period: 365, color: 0x1a66ff },
-                { size: 2, distance: 100, period: 687, color: 0xff3300 },
-                { size: 8, distance: 150, period: 4333, color: 0xff9966 },
-                { size: 7, distance: 200, period: 10759, color: 0xffcc66 },
-                { size: 5, distance: 250, period: 30687, color: 0x66ccff },
-                { size: 5, distance: 300, period: 60190, color: 0x3366ff }
-            ];
-            
-            // 创建行星
-            planetData.forEach(data => {
-                const geometry = new THREE.SphereGeometry(data.size, 32, 32);
-                const material = new THREE.MeshPhongMaterial({
-                    color: data.color,
-                    specular: 0x111111,
-                    shininess: 30
-                });
-                const planet = new THREE.Mesh(geometry, material);
-                
-                // 创建轨道
-                const orbitGeometry = new THREE.BufferGeometry();
-                const orbitPoints = [];
-                const orbitRadius = data.distance;
-                
-                for (let i = 0; i <= 64; i++) {
-                    const angle = (i / 64) * Math.PI * 2;
-                    orbitPoints.push(new THREE.Vector3(
-                        Math.cos(angle) * orbitRadius,
-                        0,
-                        Math.sin(angle) * orbitRadius
-                    ));
-                }
-                
-                orbitGeometry.setFromPoints(orbitPoints);
-                const orbitMaterial = new THREE.LineBasicMaterial({
-                    color: 0x444466,
-                    transparent: true,
-                    opacity: 0.1
-                });
-                const orbit = new THREE.Line(orbitGeometry, orbitMaterial);
-                scene.add(orbit);
-                
-                // 随机初始位置
-                const initialAngle = Math.random() * Math.PI * 2;
-                planet.position.x = Math.cos(initialAngle) * data.distance;
-                planet.position.z = Math.sin(initialAngle) * data.distance;
-                
-                scene.add(planet);
-                
-                // 保存行星信息
-                planets.push({
-                    mesh: planet,
-                    distance: data.distance,
-                    period: data.period
-                });
-            });
-        }
-        
-        function createStarfield() {
-            // 创建星空背景
-            const starGeometry = new THREE.BufferGeometry();
-            const starMaterial = new THREE.PointsMaterial({
-                color: 0xffffff,
-                size: 0.5,
-                transparent: true,
-                opacity: 0.8
-            });
-            
-            const starVertices = [];
-            for (let i = 0; i < 5000; i++) {
-                const x = (Math.random() - 0.5) * 2000;
-                const y = (Math.random() - 0.5) * 2000;
-                const z = (Math.random() - 0.5) * 2000;
-                starVertices.push(x, y, z);
-            }
-            
-            starGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starVertices, 3));
-            const stars = new THREE.Points(starGeometry, starMaterial);
-            scene.add(stars);
-        }
-        
-        function onWindowResize() {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-        }
-        
-        function animate() {
-            requestAnimationFrame(animate);
-            
-            // 更新行星位置
-            const time = Date.now() * 0.0001 * speed;
-            planets.forEach(planet => {
-                const angle = (time / planet.period) * Math.PI * 2;
-                planet.mesh.position.x = Math.cos(angle) * planet.distance;
-                planet.mesh.position.z = Math.sin(angle) * planet.distance;
-                planet.mesh.rotation.y += 0.005 * speed;
-            });
-            
-            // 更新控制器
-            controls.update();
-            
-            // 渲染场景
-            renderer.render(scene, camera);
-        }
-        
-        // 页面加载完成后初始化
-        window.addEventListener('load', initUniverse);
-        
-        // 创建漂浮的星星效果
-        function createFloatingStars() {
-            const container = document.getElementById('universe-container');
-            const starCount = 100;
-            
-            for (let i = 0; i < starCount; i++) {
-                const star = document.createElement('div');
-                star.className = 'star';
-                
-                // 随机大小
-                const size = Math.random() * 3;
-                star.style.width = `${size}px`;
-                star.style.height = `${size}px`;
-                
-                // 随机位置
-                star.style.left = `${Math.random() * 100}vw`;
-                star.style.top = `${Math.random() * 100}vh`;
-                
-                // 随机动画持续时间
-                star.style.setProperty('--duration', `${5 + Math.random() * 10}s`);
-                
-                container.appendChild(star);
-            }
-        }
-        
-        // 调用创建星星函数
-        createFloatingStars();
-    </script>
+
+    <script src="js/solar-system.js"></script>
+    <script src="js/blog.js"></script>
 </body>
 </html>
