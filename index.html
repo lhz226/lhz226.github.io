@@ -148,6 +148,63 @@
             z-index: 1001;
         }
 
+        /* Language switcher */
+        .language-switcher {
+            margin-left: 30px;
+            position: relative;
+        }
+
+        .language-btn {
+            background: transparent;
+            border: none;
+            color: var(--text);
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+
+        .language-btn:hover {
+            background: rgba(0, 119, 204, 0.1);
+        }
+
+        .language-btn i {
+            margin-right: 8px;
+        }
+
+        .language-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 10px 0;
+            min-width: 120px;
+            display: none;
+            z-index: 1000;
+        }
+
+        .language-dropdown.active {
+            display: block;
+        }
+
+        .language-dropdown a {
+            display: block;
+            padding: 8px 20px;
+            color: var(--text);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .language-dropdown a:hover {
+            background: var(--primary);
+            color: var(--accent);
+        }
+
         /* Hero Section - Animated Gradient Background */
         .hero {
             height: 100vh;
@@ -346,7 +403,7 @@
             display: block;
         }
 
-        /* Stats - Animated counters */
+        /* Stats - Static counters */
         .stats {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -557,7 +614,7 @@
         .showcase-slider {
             display: flex;
             height: 100%;
-            transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
+            transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1));
         }
 
         .showcase-slide {
@@ -1089,6 +1146,10 @@
             .showcase-content p {
                 font-size: 1rem;
             }
+            
+            .language-switcher {
+                margin-left: 15px;
+            }
         }
 
         @media (max-width: 576px) {
@@ -1146,11 +1207,21 @@
             </div>
             <nav>
                 <ul id="nav-menu">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#products">Products</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#home" data-en="Home" data-cn="首页">Home</a></li>
+                    <li><a href="#about" data-en="About" data-cn="关于我们">About</a></li>
+                    <li><a href="#products" data-en="Products" data-cn="产品">Products</a></li>
+                    <li><a href="#contact" data-en="Contact" data-cn="联系我们">Contact</a></li>
                 </ul>
+                <div class="language-switcher">
+                    <button class="language-btn" id="language-btn">
+                        <i class="fas fa-globe"></i>
+                        <span>EN</span>
+                    </button>
+                    <div class="language-dropdown" id="language-dropdown">
+                        <a href="#" data-lang="en">English</a>
+                        <a href="#" data-lang="cn">中文</a>
+                    </div>
+                </div>
                 <div class="mobile-menu" id="mobile-menu">
                     <i class="fas fa-bars"></i>
                 </div>
@@ -1163,11 +1234,11 @@
         <div class="particles" id="particles"></div>
         <div class="container">
             <div class="hero-content">
-                <h1>Precision Weighing & Dosing Solutions</h1>
-                <p>HDMCT delivers cutting-edge industrial measurement and control systems with unmatched accuracy and reliability for global industries.</p>
+                <h1 data-en="Precision Weighing & Dosing Solutions" data-cn="精密称重与配料解决方案">Precision Weighing & Dosing Solutions</h1>
+                <p data-en="HDMCT delivers cutting-edge industrial measurement and control systems with unmatched accuracy and reliability for global industries." data-cn="HDMCT为全球工业提供尖端测量与控制系统，具有无与伦比的精确性和可靠性。">HDMCT delivers cutting-edge industrial measurement and control systems with unmatched accuracy and reliability for global industries.</p>
                 <div class="btn-container">
-                    <a href="#products" class="btn">Explore Products <i class="fas fa-arrow-right"></i></a>
-                    <a href="#contact" class="btn btn-outline">Contact Us <i class="fas fa-paper-plane"></i></a>
+                    <a href="#products" class="btn" data-en="Explore Products" data-cn="查看产品"><span class="btn-text">Explore Products</span> <i class="fas fa-arrow-right"></i></a>
+                    <a href="#contact" class="btn btn-outline" data-en="Contact Us" data-cn="联系我们"><span class="btn-text">Contact Us</span> <i class="fas fa-paper-plane"></i></a>
                 </div>
             </div>
         </div>
@@ -1177,15 +1248,15 @@
     <section class="section" id="about">
         <div class="container">
             <div class="section-title">
-                <h2>About HDMCT</h2>
-                <p>Innovating measurement technology since 2005 with precision engineering and cutting-edge solutions</p>
+                <h2 data-en="About HDMCT" data-cn="关于HDMCT">About HDMCT</h2>
+                <p data-en="Innovating measurement technology since 2005 with precision engineering and cutting-edge solutions" data-cn="自2005年以来，以精密工程和尖端解决方案创新测量技术">Innovating measurement technology since 2005 with precision engineering and cutting-edge solutions</p>
             </div>
             <div class="about-content">
                 <div class="about-text">
-                    <h3>Global Leader in Industrial Measurement Technology</h3>
-                    <p>Dongguan Hangda Measurement and Control Technology (HDMCT) stands at the forefront of precision weighing and dosing systems, serving industries worldwide with innovative solutions since our establishment.</p>
-                    <p>Our cutting-edge technology and engineering expertise have positioned us as the preferred partner for Fortune 500 companies across the chemical, food processing, pharmaceutical, and manufacturing sectors.</p>
-                    <p>HDMCT's ISO 9001-certified manufacturing facilities combine German engineering precision with Chinese manufacturing efficiency, delivering systems with micron-level accuracy that operate flawlessly in the most demanding industrial environments.</p>
+                    <h3 data-en="Global Leader in Industrial Measurement Technology" data-cn="工业测量技术的全球领导者">Global Leader in Industrial Measurement Technology</h3>
+                    <p data-en="Dongguan Hangda Measurement and Control Technology (HDMCT) stands at the forefront of precision weighing and dosing systems, serving industries worldwide with innovative solutions since our establishment." data-cn="东莞航达测控技术（HDMCT）自成立以来一直处于精密称重和配料系统的最前沿，为全球工业提供创新解决方案。">Dongguan Hangda Measurement and Control Technology (HDMCT) stands at the forefront of precision weighing and dosing systems, serving industries worldwide with innovative solutions since our establishment.</p>
+                    <p data-en="Our cutting-edge technology and engineering expertise have positioned us as the preferred partner for Fortune 500 companies across the chemical, food processing, pharmaceutical, and manufacturing sectors." data-cn="我们的尖端技术和工程专业知识使我们成为化工、食品加工、制药和制造领域财富500强企业的首选合作伙伴。">Our cutting-edge technology and engineering expertise have positioned us as the preferred partner for Fortune 500 companies across the chemical, food processing, pharmaceutical, and manufacturing sectors.</p>
+                    <p data-en="HDMCT's ISO 9001-certified manufacturing facilities combine German engineering precision with Chinese manufacturing efficiency, delivering systems with micron-level accuracy that operate flawlessly in the most demanding industrial environments." data-cn="HDMCT通过ISO 9001认证的制造工厂将德国工程精度与中国制造效率相结合，提供微米级精度的系统，在最苛刻的工业环境中完美运行。">HDMCT's ISO 9001-certified manufacturing facilities combine German engineering precision with Chinese manufacturing efficiency, delivering systems with micron-level accuracy that operate flawlessly in the most demanding industrial environments.</p>
                 </div>
                 <div class="about-image floating">
                     <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="HDMCT Factory">
@@ -1193,20 +1264,20 @@
             </div>
             <div class="stats">
                 <div class="stat-item">
-                    <div class="stat-number" data-count="1500">0</div>
-                    <div class="stat-text">Systems Installed</div>
+                    <div class="stat-number">1500</div>
+                    <div class="stat-text" data-en="Systems Installed" data-cn="系统安装量">Systems Installed</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number" data-count="98.7">0</div>
-                    <div class="stat-text">Client Retention</div>
+                    <div class="stat-number">98.7%</div>
+                    <div class="stat-text" data-en="Client Retention" data-cn="客户保留率">Client Retention</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number" data-count="40">0</div>
-                    <div class="stat-text">Countries Served</div>
+                    <div class="stat-number">40</div>
+                    <div class="stat-text" data-en="Countries Served" data-cn="服务国家">Countries Served</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number" data-count="0.01">0</div>
-                    <div class="stat-text">Measurement Error</div>
+                    <div class="stat-number">±0.01%</div>
+                    <div class="stat-text" data-en="Measurement Error" data-cn="测量误差">Measurement Error</div>
                 </div>
             </div>
         </div>
@@ -1216,14 +1287,14 @@
     <section class="section products" id="products">
         <div class="container">
             <div class="section-title">
-                <h2>Our Products</h2>
-                <p>Advanced solutions tailored for your industrial measurement and control needs</p>
+                <h2 data-en="Our Products" data-cn="我们的产品">Our Products</h2>
+                <p data-en="Advanced solutions tailored for your industrial measurement and control needs" data-cn="为您的工业测量和控制需求量身定制的先进解决方案">Advanced solutions tailored for your industrial measurement and control needs</p>
             </div>
             
             <div class="product-tabs">
-                <button class="tab-btn active" data-tab="weighing">Weighing Systems</button>
-                <button class="tab-btn" data-tab="dosing">Dosing Systems</button>
-                <button class="tab-btn" data-tab="packaging">Packaging Solutions</button>
+                <button class="tab-btn active" data-tab="weighing" data-en="Weighing Systems" data-cn="称重系统">Weighing Systems</button>
+                <button class="tab-btn" data-tab="dosing" data-en="Dosing Systems" data-cn="配料系统">Dosing Systems</button>
+                <button class="tab-btn" data-tab="packaging" data-en="Packaging Solutions" data-cn="包装解决方案">Packaging Solutions</button>
             </div>
             
             <div class="tab-content active" id="weighing">
@@ -1233,13 +1304,13 @@
                             <img src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Hopper Weighing System">
                         </div>
                         <div class="product-info">
-                            <h3>Hopper Weighing System</h3>
-                            <p>Advanced gravimetric measurement technology for bulk materials with industry-leading ±0.05% accuracy.</p>
+                            <h3 data-en="Hopper Weighing System" data-cn="料斗称重系统">Hopper Weighing System</h3>
+                            <p data-en="Advanced gravimetric measurement technology for bulk materials with industry-leading ±0.05% accuracy." data-cn="用于散装物料的高级重量测量技术，具有行业领先的±0.05%精度。">Advanced gravimetric measurement technology for bulk materials with industry-leading ±0.05% accuracy.</p>
                             <ul class="features">
-                                <li>Stainless steel construction for harsh environments</li>
-                                <li>Multi-stage filtration for dust control</li>
-                                <li>Real-time data logging and analytics</li>
-                                <li>Custom capacities from 5kg to 50 tons</li>
+                                <li data-en="Stainless steel construction for harsh environments" data-cn="不锈钢结构，适用于恶劣环境">Stainless steel construction for harsh environments</li>
+                                <li data-en="Multi-stage filtration for dust control" data-cn="多级过滤控制粉尘">Multi-stage filtration for dust control</li>
+                                <li data-en="Real-time data logging and analytics" data-cn="实时数据记录和分析">Real-time data logging and analytics</li>
+                                <li data-en="Custom capacities from 5kg to 50 tons" data-cn="定制容量从5公斤到50吨">Custom capacities from 5kg to 50 tons</li>
                             </ul>
                         </div>
                     </div>
@@ -1249,13 +1320,13 @@
                             <img src="https://images.unsplash.com/photo-1605001011156-cbf0b0f67a51?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Vacuum Conveying & Batching System">
                         </div>
                         <div class="product-info">
-                            <h3>Vacuum Conveying & Batching System</h3>
-                            <p>Fully automated material handling with precision batch control and contamination-free transfer.</p>
+                            <h3 data-en="Vacuum Conveying & Batching System" data-cn="真空输送与配料系统">Vacuum Conveying & Batching System</h3>
+                            <p data-en="Fully automated material handling with precision batch control and contamination-free transfer." data-cn="全自动物料处理，精确批次控制，无污染传输。">Fully automated material handling with precision batch control and contamination-free transfer.</p>
                             <ul class="features">
-                                <li>Gentle material handling preserves product integrity</li>
-                                <li>Integrated CIP (Clean-in-Place) functionality</li>
-                                <li>Energy-efficient vortex vacuum technology</li>
-                                <li>Throughput up to 15 tons/hour</li>
+                                <li data-en="Gentle material handling preserves product integrity" data-cn="温和的物料处理保持产品完整性">Gentle material handling preserves product integrity</li>
+                                <li data-en="Integrated CIP (Clean-in-Place) functionality" data-cn="集成CIP(就地清洁)功能">Integrated CIP (Clean-in-Place) functionality</li>
+                                <li data-en="Energy-efficient vortex vacuum technology" data-cn="节能涡旋真空技术">Energy-efficient vortex vacuum technology</li>
+                                <li data-en="Throughput up to 15 tons/hour" data-cn="吞吐量高达15吨/小时">Throughput up to 15 tons/hour</li>
                             </ul>
                         </div>
                     </div>
@@ -1265,13 +1336,13 @@
                             <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Manual Batching System">
                         </div>
                         <div class="product-info">
-                            <h3>Manual Batching System</h3>
-                            <p>Flexible, cost-effective solution for small batch production with precision control.</p>
+                            <h3 data-en="Manual Batching System" data-cn="手动配料系统">Manual Batching System</h3>
+                            <p data-en="Flexible, cost-effective solution for small batch production with precision control." data-cn="灵活、经济高效的小批量生产解决方案，具有精确控制。">Flexible, cost-effective solution for small batch production with precision control.</p>
                             <ul class="features">
-                                <li>Ergonomic operator interface</li>
-                                <li>Recipe management for up to 500 formulations</li>
-                                <li>Optional barcode/RFID verification</li>
-                                <li>Modular design for easy expansion</li>
+                                <li data-en="Ergonomic operator interface" data-cn="符合人体工程学的操作界面">Ergonomic operator interface</li>
+                                <li data-en="Recipe management for up to 500 formulations" data-cn="配方管理多达500种配方">Recipe management for up to 500 formulations</li>
+                                <li data-en="Optional barcode/RFID verification" data-cn="可选条形码/RFID验证">Optional barcode/RFID verification</li>
+                                <li data-en="Modular design for easy expansion" data-cn="模块化设计便于扩展">Modular design for easy expansion</li>
                             </ul>
                         </div>
                     </div>
@@ -1285,13 +1356,13 @@
                             <img src="https://images.unsplash.com/photo-1627855437693-dcc7b0c4ba7b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Liquid Dosing System">
                         </div>
                         <div class="product-info">
-                            <h3>Liquid Dosing System</h3>
-                            <p>Precision volumetric or gravimetric dosing for liquids with viscosity up to 50,000 cP.</p>
+                            <h3 data-en="Liquid Dosing System" data-cn="液体配料系统">Liquid Dosing System</h3>
+                            <p data-en="Precision volumetric or gravimetric dosing for liquids with viscosity up to 50,000 cP." data-cn="精确的体积或重量配料系统，适用于粘度高达50,000 cP的液体。">Precision volumetric or gravimetric dosing for liquids with viscosity up to 50,000 cP.</p>
                             <ul class="features">
-                                <li>±0.1% dosing accuracy</li>
-                                <li>Hygienic design with FDA-compliant materials</li>
-                                <li>Self-cleaning nozzle technology</li>
-                                <li>Flow rates from 1ml/min to 500l/min</li>
+                                <li data-en="±0.1% dosing accuracy" data-cn="±0.1%配料精度">±0.1% dosing accuracy</li>
+                                <li data-en="Hygienic design with FDA-compliant materials" data-cn="符合FDA标准的卫生设计材料">Hygienic design with FDA-compliant materials</li>
+                                <li data-en="Self-cleaning nozzle technology" data-cn="自清洁喷嘴技术">Self-cleaning nozzle technology</li>
+                                <li data-en="Flow rates from 1ml/min to 500l/min" data-cn="流速从1毫升/分钟到500升/分钟">Flow rates from 1ml/min to 500l/min</li>
                             </ul>
                         </div>
                     </div>
@@ -1301,13 +1372,13 @@
                             <img src="https://images.unsplash.com/photo-1581093450021-4a7360e9a3c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1950&q=80" alt="Powder Dosing System">
                         </div>
                         <div class="product-info">
-                            <h3>Powder Dosing System</h3>
-                            <p>Advanced loss-in-weight technology for precise powder and granule dispensing.</p>
+                            <h3 data-en="Powder Dosing System" data-cn="粉末配料系统">Powder Dosing System</h3>
+                            <p data-en="Advanced loss-in-weight technology for precise powder and granule dispensing." data-cn="先进的失重技术，用于精确的粉末和颗粒配料。">Advanced loss-in-weight technology for precise powder and granule dispensing.</p>
                             <ul class="features">
-                                <li>Anti-bridging and anti-caking technology</li>
-                                <li>Micro-dosing capability down to 0.1g</li>
-                                <li>Pneumatic or screw feeder options</li>
-                                <li>ATEX certification for explosive environments</li>
+                                <li data-en="Anti-bridging and anti-caking technology" data-cn="防桥接和防结块技术">Anti-bridging and anti-caking technology</li>
+                                <li data-en="Micro-dosing capability down to 0.1g" data-cn="微量配料能力低至0.1克">Micro-dosing capability down to 0.1g</li>
+                                <li data-en="Pneumatic or screw feeder options" data-cn="气动或螺旋给料机选项">Pneumatic or screw feeder options</li>
+                                <li data-en="ATEX certification for explosive environments" data-cn="ATEX认证适用于爆炸性环境">ATEX certification for explosive environments</li>
                             </ul>
                         </div>
                     </div>
@@ -1317,13 +1388,13 @@
                             <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1350&q=80" alt="Multi-Component Dosing">
                         </div>
                         <div class="product-info">
-                            <h3>Multi-Component Dosing</h3>
-                            <p>Synchronized dosing of up to 12 components with perfect ratio control.</p>
+                            <h3 data-en="Multi-Component Dosing" data-cn="多组分配料系统">Multi-Component Dosing</h3>
+                            <p data-en="Synchronized dosing of up to 12 components with perfect ratio control." data-cn="同步配料多达12种组分，具有完美的比例控制。">Synchronized dosing of up to 12 components with perfect ratio control.</p>
                             <ul class="features">
-                                <li>Dynamic ratio adjustment during operation</li>
-                                <li>Automatic viscosity compensation</li>
-                                <li>Integrated static mixer options</li>
-                                <li>Real-time component consumption tracking</li>
+                                <li data-en="Dynamic ratio adjustment during operation" data-cn="操作期间动态比例调整">Dynamic ratio adjustment during operation</li>
+                                <li data-en="Automatic viscosity compensation" data-cn="自动粘度补偿">Automatic viscosity compensation</li>
+                                <li data-en="Integrated static mixer options" data-cn="集成静态混合器选项">Integrated static mixer options</li>
+                                <li data-en="Real-time component consumption tracking" data-cn="实时组分消耗跟踪">Real-time component consumption tracking</li>
                             </ul>
                         </div>
                     </div>
@@ -1337,13 +1408,13 @@
                             <img src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Integrated Packaging Machine">
                         </div>
                         <div class="product-info">
-                            <h3>Integrated Big Bag Packaging</h3>
-                            <p>Complete end-of-line solution with automatic weighing, filling, and sealing.</p>
+                            <h3 data-en="Integrated Big Bag Packaging" data-cn="集成式大袋包装">Integrated Big Bag Packaging</h3>
+                            <p data-en="Complete end-of-line solution with automatic weighing, filling, and sealing." data-cn="完整的生产线末端解决方案，具有自动称重、填充和密封功能。">Complete end-of-line solution with automatic weighing, filling, and sealing.</p>
                             <ul class="features">
-                                <li>Capacity up to 2000kg per bag</li>
-                                <li>Automatic bag placement and removal</li>
-                                <li>Integrated dust collection system</li>
-                                <li>Output up to 20 bags/hour</li>
+                                <li data-en="Capacity up to 2000kg per bag" data-cn="每袋容量高达2000公斤">Capacity up to 2000kg per bag</li>
+                                <li data-en="Automatic bag placement and removal" data-cn="自动袋子放置和移除">Automatic bag placement and removal</li>
+                                <li data-en="Integrated dust collection system" data-cn="集成除尘系统">Integrated dust collection system</li>
+                                <li data-en="Output up to 20 bags/hour" data-cn="输出高达20袋/小时">Output up to 20 bags/hour</li>
                             </ul>
                         </div>
                     </div>
@@ -1353,13 +1424,13 @@
                             <img src="https://images.unsplash.com/photo-1605001011156-cbf0b0f67a51?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Small Bag Packaging">
                         </div>
                         <div class="product-info">
-                            <h3>Small Bag Packaging</h3>
-                            <p>High-speed automated packaging for small format products.</p>
+                            <h3 data-en="Small Bag Packaging" data-cn="小袋包装">Small Bag Packaging</h3>
+                            <p data-en="High-speed automated packaging for small format products." data-cn="小规格产品的高速自动化包装。">High-speed automated packaging for small format products.</p>
                             <ul class="features">
-                                <li>Simultaneous multi-format packaging</li>
-                                <li>Integrated checkweigher and metal detection</li>
-                                <li>Optional robotic palletizing</li>
-                                <li>Output up to 60 bags/minute</li>
+                                <li data-en="Simultaneous multi-format packaging" data-cn="同时多格式包装">Simultaneous multi-format packaging</li>
+                                <li data-en="Integrated checkweigher and metal detection" data-cn="集成检重和金属检测">Integrated checkweigher and metal detection</li>
+                                <li data-en="Optional robotic palletizing" data-cn="可选机器人码垛">Optional robotic palletizing</li>
+                                <li data-en="Output up to 60 bags/minute" data-cn="输出高达60袋/分钟">Output up to 60 bags/minute</li>
                             </ul>
                         </div>
                     </div>
@@ -1372,22 +1443,22 @@
                     <div class="showcase-slide">
                         <img src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="HDMCT System in Operation">
                         <div class="showcase-content">
-                            <h3>Industry 4.0 Ready</h3>
-                            <p>All HDMCT systems come with IoT connectivity for remote monitoring, predictive maintenance, and seamless integration with your MES/ERP systems.</p>
+                            <h3 data-en="Industry 4.0 Ready" data-cn="工业4.0就绪">Industry 4.0 Ready</h3>
+                            <p data-en="All HDMCT systems come with IoT connectivity for remote monitoring, predictive maintenance, and seamless integration with your MES/ERP systems." data-cn="所有HDMCT系统都配备物联网连接，用于远程监控、预测性维护以及与您的MES/ERP系统的无缝集成。">All HDMCT systems come with IoT connectivity for remote monitoring, predictive maintenance, and seamless integration with your MES/ERP systems.</p>
                         </div>
                     </div>
                     <div class="showcase-slide">
                         <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Precision Engineering">
                         <div class="showcase-content">
-                            <h3>Swiss-Level Precision</h3>
-                            <p>Our proprietary weighing cells achieve measurement stability within 0.01% of full scale, even in high-vibration industrial environments.</p>
+                            <h3 data-en="Swiss-Level Precision" data-cn="瑞士级精度">Swiss-Level Precision</h3>
+                            <p data-en="Our proprietary weighing cells achieve measurement stability within 0.01% of full scale, even in high-vibration industrial environments." data-cn="我们的专有称重传感器即使在高度振动的工业环境中也能实现满量程0.01%以内的测量稳定性。">Our proprietary weighing cells achieve measurement stability within 0.01% of full scale, even in high-vibration industrial environments.</p>
                         </div>
                     </div>
                     <div class="showcase-slide">
                         <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Global Support">
                         <div class="showcase-content">
-                            <h3>Global Support Network</h3>
-                            <p>With service centers in 12 countries and 24/7 remote diagnostics, we guarantee maximum uptime for your operations worldwide.</p>
+                            <h3 data-en="Global Support Network" data-cn="全球支持网络">Global Support Network</h3>
+                            <p data-en="With service centers in 12 countries and 24/7 remote diagnostics, we guarantee maximum uptime for your operations worldwide." data-cn="我们在12个国家设有服务中心，提供24/7远程诊断，确保您全球业务的最大运行时间。">With service centers in 12 countries and 24/7 remote diagnostics, we guarantee maximum uptime for your operations worldwide.</p>
                         </div>
                     </div>
                 </div>
@@ -1403,29 +1474,29 @@
             </div>
             
             <div class="section-title">
-                <h2>Other Solutions</h2>
-                <p>Comprehensive measurement and control solutions for your production needs</p>
+                <h2 data-en="Other Solutions" data-cn="其他解决方案">Other Solutions</h2>
+                <p data-en="Comprehensive measurement and control solutions for your production needs" data-cn="为您的生产需求提供全面的测量和控制解决方案">Comprehensive measurement and control solutions for your production needs</p>
             </div>
             <div class="other-products">
                 <div class="other-product-card">
                     <i class="fas fa-weight-hanging"></i>
-                    <h3>Checkweighers</h3>
-                    <p>High-speed in-line weight verification with automatic rejection.</p>
+                    <h3 data-en="Checkweighers" data-cn="检重秤">Checkweighers</h3>
+                    <p data-en="High-speed in-line weight verification with automatic rejection." data-cn="高速在线重量验证，具有自动剔除功能。">High-speed in-line weight verification with automatic rejection.</p>
                 </div>
                 <div class="other-product-card">
                     <i class="fas fa-tint"></i>
-                    <h3>Liquid Fillers</h3>
-                    <p>Precision volumetric filling for bottles, cans, and containers.</p>
+                    <h3 data-en="Liquid Fillers" data-cn="液体灌装机">Liquid Fillers</h3>
+                    <p data-en="Precision volumetric filling for bottles, cans, and containers." data-cn="精确的体积灌装，适用于瓶子、罐子和容器。">Precision volumetric filling for bottles, cans, and containers.</p>
                 </div>
                 <div class="other-product-card">
                     <i class="fas fa-conveyor-belt"></i>
-                    <h3>Conveyor Systems</h3>
-                    <p>Custom material handling solutions for your production line.</p>
+                    <h3 data-en="Conveyor Systems" data-cn="输送系统">Conveyor Systems</h3>
+                    <p data-en="Custom material handling solutions for your production line." data-cn="为您的生产线定制物料处理解决方案。">Custom material handling solutions for your production line.</p>
                 </div>
                 <div class="other-product-card">
                     <i class="fas fa-robot"></i>
-                    <h3>Automation</h3>
-                    <p>Complete line automation and robotic integration.</p>
+                    <h3 data-en="Automation" data-cn="自动化">Automation</h3>
+                    <p data-en="Complete line automation and robotic integration." data-cn="完整的生产线自动化和机器人集成。">Complete line automation and robotic integration.</p>
                 </div>
             </div>
         </div>
@@ -1435,16 +1506,16 @@
     <section class="section contact" id="contact">
         <div class="container">
             <div class="section-title">
-                <h2>Contact Us</h2>
-                <p>Get in touch with our team for customized solutions and support</p>
+                <h2 data-en="Contact Us" data-cn="联系我们">Contact Us</h2>
+                <p data-en="Get in touch with our team for customized solutions and support" data-cn="联系我们的团队获取定制解决方案和支持">Get in touch with our team for customized solutions and support</p>
             </div>
             <div class="contact-container">
                 <div class="contact-info">
-                    <h3>Get in Touch</h3>
+                    <h3 data-en="Get in Touch" data-cn="联系我们">Get in Touch</h3>
                     <div class="contact-details">
                         <div class="contact-item">
                             <i class="fas fa-map-marker-alt"></i>
-                            <span>Dongguan City, Guangdong Province, China</span>
+                            <span data-en="Dongguan City, Guangdong Province, China" data-cn="中国广东省东莞市">Dongguan City, Guangdong Province, China</span>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-envelope"></i>
@@ -1456,7 +1527,7 @@
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-clock"></i>
-                            <span>Monday - Friday: 8:30 AM - 5:30 PM (GMT+8)</span>
+                            <span data-en="Monday - Friday: 8:30 AM - 5:30 PM (GMT+8)" data-cn="周一至周五: 上午8:30 - 下午5:30 (GMT+8)">Monday - Friday: 8:30 AM - 5:30 PM (GMT+8)</span>
                         </div>
                     </div>
                     <div class="map">
@@ -1466,26 +1537,26 @@
                 <div class="contact-form">
                     <form id="contactForm">
                         <div class="form-group">
-                            <label for="name">Name</label>
+                            <label for="name" data-en="Name" data-cn="姓名">Name</label>
                             <input type="text" id="name" name="name" required>
                         </div>
                         <div class="form-group">
-                            <label for="email">Email</label>
+                            <label for="email" data-en="Email" data-cn="电子邮件">Email</label>
                             <input type="email" id="email" name="email" required>
                         </div>
                         <div class="form-group">
-                            <label for="phone">Phone</label>
+                            <label for="phone" data-en="Phone" data-cn="电话">Phone</label>
                             <input type="tel" id="phone" name="phone">
                         </div>
                         <div class="form-group">
-                            <label for="company">Company</label>
+                            <label for="company" data-en="Company" data-cn="公司">Company</label>
                             <input type="text" id="company" name="company">
                         </div>
                         <div class="form-group">
-                            <label for="message">How can we help you?</label>
+                            <label for="message" data-en="How can we help you?" data-cn="我们可以如何帮助您？">How can we help you?</label>
                             <textarea id="message" name="message" required></textarea>
                         </div>
-                        <button type="submit" class="btn">Send Message <i class="fas fa-paper-plane"></i></button>
+                        <button type="submit" class="btn" data-en="Send Message" data-cn="发送消息"><span class="btn-text">Send Message</span> <i class="fas fa-paper-plane"></i></button>
                     </form>
                 </div>
             </div>
@@ -1498,7 +1569,7 @@
             <div class="footer-container">
                 <div class="footer-col">
                     <h3>HDMCT</h3>
-                    <p>Precision measurement and control solutions for global industries since 2005.</p>
+                    <p data-en="Precision measurement and control solutions for global industries since 2005." data-cn="自2005年以来为全球工业提供精密测量和控制解决方案">Precision measurement and control solutions for global industries since 2005.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-linkedin-in"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
@@ -1507,38 +1578,38 @@
                     </div>
                 </div>
                 <div class="footer-col">
-                    <h3>Products</h3>
+                    <h3 data-en="Products" data-cn="产品">Products</h3>
                     <ul>
-                        <li><a href="#">Weighing Systems</a></li>
-                        <li><a href="#">Dosing Systems</a></li>
-                        <li><a href="#">Packaging Machines</a></li>
-                        <li><a href="#">Conveying Solutions</a></li>
-                        <li><a href="#">Automation</a></li>
+                        <li><a href="#" data-en="Weighing Systems" data-cn="称重系统">Weighing Systems</a></li>
+                        <li><a href="#" data-en="Dosing Systems" data-cn="配料系统">Dosing Systems</a></li>
+                        <li><a href="#" data-en="Packaging Machines" data-cn="包装机械">Packaging Machines</a></li>
+                        <li><a href="#" data-en="Conveying Solutions" data-cn="输送解决方案">Conveying Solutions</a></li>
+                        <li><a href="#" data-en="Automation" data-cn="自动化">Automation</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h3>Industries</h3>
+                    <h3 data-en="Industries" data-cn="行业">Industries</h3>
                     <ul>
-                        <li><a href="#">Chemicals</a></li>
-                        <li><a href="#">Food & Beverage</a></li>
-                        <li><a href="#">Pharmaceutical</a></li>
-                        <li><a href="#">Plastics</a></li>
-                        <li><a href="#">Agriculture</a></li>
+                        <li><a href="#" data-en="Chemicals" data-cn="化工">Chemicals</a></li>
+                        <li><a href="#" data-en="Food & Beverage" data-cn="食品饮料">Food & Beverage</a></li>
+                        <li><a href="#" data-en="Pharmaceutical" data-cn="制药">Pharmaceutical</a></li>
+                        <li><a href="#" data-en="Plastics" data-cn="塑料">Plastics</a></li>
+                        <li><a href="#" data-en="Agriculture" data-cn="农业">Agriculture</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h3>Company</h3>
+                    <h3 data-en="Company" data-cn="公司">Company</h3>
                     <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">News</a></li>
-                        <li><a href="#">Case Studies</a></li>
-                        <li><a href="#">Contact</a></li>
+                        <li><a href="#" data-en="About Us" data-cn="关于我们">About Us</a></li>
+                        <li><a href="#" data-en="Careers" data-cn="职业发展">Careers</a></li>
+                        <li><a href="#" data-en="News" data-cn="新闻">News</a></li>
+                        <li><a href="#" data-en="Case Studies" data-cn="案例研究">Case Studies</a></li>
+                        <li><a href="#" data-en="Contact" data-cn="联系我们">Contact</a></li>
                     </ul>
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2023 Dongguan Hangda Measurement and Control Technology Co., Ltd. All Rights Reserved.</p>
+                <p data-en="&copy; 2023 Dongguan Hangda Measurement and Control Technology Co., Ltd. All Rights Reserved." data-cn="&copy; 2023 东莞航达测控技术有限公司 版权所有">&copy; 2023 Dongguan Hangda Measurement and Control Technology Co., Ltd. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
@@ -1651,7 +1722,9 @@
         const contactForm = document.getElementById('contactForm');
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            alert('Thank you for your message! We will contact you soon.');
+            const currentLang = document.documentElement.lang === 'zh-CN' ? 'cn' : 'en';
+            const message = currentLang === 'cn' ? '感谢您的留言！我们会尽快与您联系。' : 'Thank you for your message! We will contact you soon.';
+            alert(message);
             contactForm.reset();
         });
         
@@ -1704,28 +1777,51 @@
             }
         }
         
-        // Animated counter for stats
-        function animateCounters() {
-            const counters = document.querySelectorAll('.stat-number');
-            const speed = 200; // The lower the faster
+        // Language switcher functionality
+        const languageBtn = document.getElementById('language-btn');
+        const languageDropdown = document.getElementById('language-dropdown');
+        
+        languageBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            languageDropdown.classList.toggle('active');
+        });
+        
+        document.querySelectorAll('.language-dropdown a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const lang = link.getAttribute('data-lang');
+                switchLanguage(lang);
+                languageDropdown.classList.remove('active');
+            });
+        });
+        
+        document.addEventListener('click', () => {
+            languageDropdown.classList.remove('active');
+        });
+        
+        function switchLanguage(lang) {
+            // Update html lang attribute
+            document.documentElement.lang = lang === 'cn' ? 'zh-CN' : 'en';
             
-            counters.forEach(counter => {
-                const target = +counter.getAttribute('data-count');
-                const count = +counter.innerText;
-                const increment = target / speed;
-                
-                if (count < target) {
-                    counter.innerText = Math.ceil(count + increment);
-                    setTimeout(animateCounters, 1);
-                } else {
-                    counter.innerText = target;
-                    
-                    // Add % symbol for percentage values
-                    if (counter.getAttribute('data-count').includes('.')) {
-                        counter.innerText = target + '%';
+            // Update language button text
+            languageBtn.querySelector('span').textContent = lang === 'cn' ? '中文' : 'EN';
+            
+            // Update all elements with data attributes
+            document.querySelectorAll('[data-en], [data-cn]').forEach(element => {
+                const text = lang === 'cn' ? element.getAttribute('data-cn') : element.getAttribute('data-en');
+                if (text) {
+                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                        element.placeholder = text;
+                    } else if (element.classList.contains('btn-text')) {
+                        element.textContent = text;
+                    } else {
+                        element.textContent = text;
                     }
                 }
             });
+            
+            // Store language preference in localStorage
+            localStorage.setItem('preferredLanguage', lang);
         }
         
         // Initialize GSAP animations
@@ -1799,18 +1895,9 @@
             createParticles();
             initAnimations();
             
-            // Start counter animation when stats section is in view
-            const statsSection = document.querySelector('#about');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        animateCounters();
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.5 });
-            
-            observer.observe(statsSection);
+            // Check for saved language preference
+            const savedLang = localStorage.getItem('preferredLanguage') || 'en';
+            switchLanguage(savedLang);
         });
     </script>
 </body>
