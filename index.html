@@ -1,134 +1,1130 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>星辰博客 | DeepSeek生成</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <title>HDMCT - Precision Weighing & Dosing Systems | Dongguan Hangda Measurement and Control Technology</title>
+    <meta name="description" content="HDMCT provides cutting-edge weighing and dosing solutions for industries worldwide. Precision-engineered hopper weighing systems, vacuum conveying technology, and integrated packaging solutions.">
+    <style>
+        :root {
+            --primary: #e6f2ff;
+            --primary-dark: #cce5ff;
+            --accent: #0077cc;
+            --text: #333;
+            --light: #f8f9fa;
+            --glass: rgba(255, 255, 255, 0.2);
+            --shadow: 0 8px 32px rgba(0, 119, 204, 0.1);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--primary);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            padding: 10px 0;
+            background: rgba(230, 242, 255, 0.9);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span {
+            margin-left: 10px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            bottom: 0;
+            left: 0;
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: var(--primary);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            z-index: 2;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            color: var(--accent);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: 2px solid var(--accent);
+        }
+
+        .btn:hover {
+            background: transparent;
+            color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 119, 204, 0.2);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--accent);
+            margin-left: 15px;
+        }
+
+        .btn-outline:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        /* About Section */
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--accent);
+            display: inline-block;
+            position: relative;
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background: var(--accent);
+            bottom: -10px;
+            left: 25%;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+        }
+
+        .about-icon {
+            flex: 1;
+            text-align: center;
+            font-size: 10rem;
+            color: var(--accent);
+            opacity: 0.7;
+        }
+
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .stat-item {
+            background: var(--light);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(5px);
+            background: var(--glass);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        /* Products */
+        .products {
+            background: var(--primary-dark);
+        }
+
+        .product-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 12px 25px;
+            background: transparent;
+            border: none;
+            border-bottom: 3px solid transparent;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            cursor: pointer;
+            transition: var(--transition);
+            margin: 0 10px;
+        }
+
+        .tab-btn.active {
+            color: var(--accent);
+            border-bottom: 3px solid var(--accent);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+            padding: 30px;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 119, 204, 0.2);
+        }
+
+        .product-icon {
+            font-size: 4rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .product-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+
+        .product-info p {
+            margin-bottom: 20px;
+        }
+
+        .features {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .features li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .features li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Auto-scrolling showcase */
+        .showcase {
+            height: 300px;
+            position: relative;
+            overflow: hidden;
+            margin: 80px 0;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            background: var(--accent);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 40px;
+        }
+
+        .showcase-content h3 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        /* Other Products */
+        .other-products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .other-product-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .other-product-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .other-product-card i {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        /* Contact */
+        .contact {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+        }
+
+        .contact-container {
+            display: flex;
+            gap: 50px;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+
+        .contact-details {
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-right: 15px;
+            width: 30px;
+            text-align: center;
+        }
+
+        .contact-form {
+            flex: 1;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: inherit;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(0, 119, 204, 0.1);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--accent);
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h3:after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background: white;
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Back to top */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0, 119, 204, 0.3);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            background: #006bb3;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .contact-container {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            nav ul {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: var(--primary);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: var(--transition);
+                z-index: 999;
+            }
+            
+            nav ul.active {
+                left: 0;
+            }
+            
+            nav ul li {
+                margin: 15px 0;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .btn-container {
+                display: flex;
+                flex-direction: column;
+            }
+            
+            .btn-outline {
+                margin-left: 0;
+                margin-top: 15px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .product-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .tab-btn {
+                margin: 5px 0;
+            }
+            
+            .about-icon {
+                font-size: 6rem;
+            }
+            
+            .product-icon {
+                font-size: 3rem;
+            }
+        }
+    </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <!-- 太阳系背景画布 -->
-    <canvas id="solarCanvas"></canvas>
-    
-    <!-- 主容器 -->
-    <div class="container">
-        <!-- 头部 -->
-        <header class="header">
-            <div class="header-content">
-                <h1 class="blog-title">星辰博客</h1>
-                <nav class="nav">
-                    <a href="#" class="nav-link active">首页</a>
-                    <a href="#" class="nav-link">归档</a>
-                    <a href="#" class="nav-link">关于</a>
-                    <div class="theme-toggle">
-                        <i class="fas fa-moon"></i>
-                    </div>
-                </nav>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-balance-scale-right"></i>
+                <span>HDMCT</span>
             </div>
-        </header>
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="mobile-menu" id="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
 
-        <!-- 主要内容 -->
-        <main class="main-content">
-            <article class="blog-post">
-                <div class="post-header">
-                    <h2 class="post-title">如何使用DeepSeek创建这个太空主题博客</h2>
-                    <div class="post-meta">
-                        <span class="post-date"><i class="far fa-calendar-alt"></i> 2023-11-15</span>
-                        <span class="post-category"><i class="fas fa-tag"></i> 技术</span>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Precision Weighing & Dosing Solutions</h1>
+            <p>HDMCT delivers cutting-edge industrial measurement and control systems with unmatched accuracy and reliability for global industries.</p>
+            <div class="btn-container">
+                <a href="#products" class="btn">Explore Products</a>
+                <a href="#contact" class="btn btn-outline">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About HDMCT</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Global Leader in Industrial Measurement Technology</h3>
+                    <p>Dongguan Hangda Measurement and Control Technology (HDMCT) stands at the forefront of precision weighing and dosing systems, serving industries worldwide with innovative solutions since our establishment.</p>
+                    <p>Our cutting-edge technology and engineering expertise have positioned us as the preferred partner for Fortune 500 companies across the chemical, food processing, pharmaceutical, and manufacturing sectors.</p>
+                    <p>HDMCT's ISO 9001-certified manufacturing facilities combine German engineering precision with Chinese manufacturing efficiency, delivering systems with micron-level accuracy that operate flawlessly in the most demanding industrial environments.</p>
+                </div>
+                <div class="about-icon floating">
+                    <i class="fas fa-industry"></i>
+                    <!-- Replace with image if needed: 
+                    <img src="https://images.unsplash.com/photo-1581092921461-39b2f2b99a73?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="HDMCT Factory">
+                    -->
+                </div>
+            </div>
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-icon"><i class="fas fa-cogs"></i></div>
+                    <div class="stat-number">1500+</div>
+                    <div class="stat-text">Systems Installed</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon"><i class="fas fa-users"></i></div>
+                    <div class="stat-number">98.7%</div>
+                    <div class="stat-text">Client Retention</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon"><i class="fas fa-globe"></i></div>
+                    <div class="stat-number">40+</div>
+                    <div class="stat-text">Countries Served</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    <div class="stat-number">0.01%</div>
+                    <div class="stat-text">Measurement Error</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="section products" id="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Products</h2>
+            </div>
+            
+            <div class="product-tabs">
+                <button class="tab-btn active" data-tab="weighing">Weighing Systems</button>
+                <button class="tab-btn" data-tab="dosing">Dosing Systems</button>
+            </div>
+            
+            <div class="tab-content active" id="weighing">
+                <div class="product-grid">
+                    <div class="product-card">
+                        <div class="product-icon">
+                            <i class="fas fa-weight-hanging"></i>
+                            <!-- Replace with image if needed:
+                            <img src="https://images.unsplash.com/photo-1581093057305-25a6129f1c0e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Hopper Weighing System">
+                            -->
+                        </div>
+                        <div class="product-info">
+                            <h3>Hopper Weighing System</h3>
+                            <p>Advanced gravimetric measurement technology for bulk materials with industry-leading ±0.05% accuracy.</p>
+                            <ul class="features">
+                                <li>Stainless steel construction for harsh environments</li>
+                                <li>Multi-stage filtration for dust control</li>
+                                <li>Real-time data logging and analytics</li>
+                                <li>Custom capacities from 5kg to 50 tons</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-icon">
+                            <i class="fas fa-wind"></i>
+                            <!-- Replace with image if needed:
+                            <img src="https://images.unsplash.com/photo-1581093057927-02d65d8d0e39?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Vacuum Conveying System">
+                            -->
+                        </div>
+                        <div class="product-info">
+                            <h3>Vacuum Conveying & Batching System</h3>
+                            <p>Fully automated material handling with precision batch control and contamination-free transfer.</p>
+                            <ul class="features">
+                                <li>Gentle material handling preserves product integrity</li>
+                                <li>Integrated CIP (Clean-in-Place) functionality</li>
+                                <li>Energy-efficient vortex vacuum technology</li>
+                                <li>Throughput up to 15 tons/hour</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-icon">
+                            <i class="fas fa-hand-paper"></i>
+                            <!-- Replace with image if needed:
+                            <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Manual Batching System">
+                            -->
+                        </div>
+                        <div class="product-info">
+                            <h3>Manual Batching System</h3>
+                            <p>Flexible, cost-effective solution for small batch production with precision control.</p>
+                            <ul class="features">
+                                <li>Ergonomic operator interface</li>
+                                <li>Recipe management for up to 500 formulations</li>
+                                <li>Optional barcode/RFID verification</li>
+                                <li>Modular design for easy expansion</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-icon">
+                            <i class="fas fa-boxes"></i>
+                            <!-- Replace with image if needed:
+                            <img src="https://images.unsplash.com/photo-1581093053655-4a8b0e8a9f0f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Packaging Machine">
+                            -->
+                        </div>
+                        <div class="product-info">
+                            <h3>Integrated Big Bag & Small Bag Packaging</h3>
+                            <p>Complete end-of-line solution with automatic weighing, filling, and sealing.</p>
+                            <ul class="features">
+                                <li>Simultaneous multi-format packaging</li>
+                                <li>Automatic bag placement and removal</li>
+                                <li>Integrated checkweigher and metal detection</li>
+                                <li>Output up to 60 bags/minute</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-                <div class="post-content">
-                    <p>欢迎来到我的星辰博客！这个独特的太空主题博客完全由DeepSeek AI生成，下面我将分享创建过程。</p>
+            </div>
+            
+            <div class="tab-content" id="dosing">
+                <div class="product-grid">
+                    <div class="product-card">
+                        <div class="product-icon">
+                            <i class="fas fa-tint"></i>
+                            <!-- Replace with image if needed:
+                            <img src="https://images.unsplash.com/photo-1581093057321-0c8a5f1c8b5e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Liquid Dosing System">
+                            -->
+                        </div>
+                        <div class="product-info">
+                            <h3>Liquid Dosing System</h3>
+                            <p>Precision volumetric or gravimetric dosing for liquids with viscosity up to 50,000 cP.</p>
+                            <ul class="features">
+                                <li>±0.1% dosing accuracy</li>
+                                <li>Hygienic design with FDA-compliant materials</li>
+                                <li>Self-cleaning nozzle technology</li>
+                                <li>Flow rates from 1ml/min to 500l/min</li>
+                            </ul>
+                        </div>
+                    </div>
                     
-                    <h3>1. 构思阶段</h3>
-                    <p>首先，我向DeepSeek提出了以下需求：</p>
+                    <div class="product-card">
+                        <div class="product-icon">
+                            <i class="fas fa-poo-storm"></i>
+                            <!-- Replace with image if needed:
+                            <img src="https://images.unsplash.com/photo-1581093057305-25a6129f1c0e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Powder Dosing System">
+                            -->
+                        </div>
+                        <div class="product-info">
+                            <h3>Powder Dosing System</h3>
+                            <p>Advanced loss-in-weight technology for precise powder and granule dispensing.</p>
+                            <ul class="features">
+                                <li>Anti-bridging and anti-caking technology</li>
+                                <li>Micro-dosing capability down to 0.1g</li>
+                                <li>Pneumatic or screw feeder options</li>
+                                <li>ATEX certification for explosive environments</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-icon">
+                            <i class="fas fa-atom"></i>
+                            <!-- Replace with image if needed:
+                            <img src="https://images.unsplash.com/photo-1581093057927-02d65d8d0e39?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Multi-Component Dosing">
+                            -->
+                        </div>
+                        <div class="product-info">
+                            <h3>Multi-Component Dosing</h3>
+                            <p>Synchronized dosing of up to 12 components with perfect ratio control.</p>
+                            <ul class="features">
+                                <li>Dynamic ratio adjustment during operation</li>
+                                <li>Automatic viscosity compensation</li>
+                                <li>Integrated static mixer options</li>
+                                <li>Real-time component consumption tracking</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product Showcase -->
+            <div class="showcase">
+                <div class="showcase-content">
+                    <i class="fas fa-network-wired" style="font-size: 3rem; margin-bottom: 20px;"></i>
+                    <h3>Industry 4.0 Ready</h3>
+                    <p>All HDMCT systems come with IoT connectivity for remote monitoring, predictive maintenance, and seamless integration with your MES/ERP systems.</p>
+                </div>
+                <!-- Replace with image slider if needed:
+                <div class="showcase-slider" id="showcase-slider">
+                    <div class="showcase-slide">
+                        <img src="https://images.unsplash.com/photo-1581093057305-25a6129f1c0e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="HDMCT System">
+                        <div class="showcase-content">
+                            <h3>Industry 4.0 Ready</h3>
+                            <p>All HDMCT systems come with IoT connectivity...</p>
+                        </div>
+                    </div>
+                </div>
+                -->
+            </div>
+            
+            <div class="section-title">
+                <h2>Other Products</h2>
+            </div>
+            <div class="other-products">
+                <div class="other-product-card">
+                    <i class="fas fa-weight-hanging"></i>
+                    <h3>Checkweighers</h3>
+                    <p>High-speed in-line weight verification with automatic rejection.</p>
+                </div>
+                <div class="other-product-card">
+                    <i class="fas fa-tint"></i>
+                    <h3>Liquid Fillers</h3>
+                    <p>Precision volumetric filling for bottles, cans, and containers.</p>
+                </div>
+                <div class="other-product-card">
+                    <i class="fas fa-conveyor-belt"></i>
+                    <h3>Conveyor Systems</h3>
+                    <p>Custom material handling solutions for your production line.</p>
+                </div>
+                <div class="other-product-card">
+                    <i class="fas fa-robot"></i>
+                    <h3>Automation</h3>
+                    <p>Complete line automation and robotic integration.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Dongguan City, Guangdong Province, China</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>2379905894@qq.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <span>+86 769 8322 5894</span>
+                        </div>
+                    </div>
+                    <div class="map">
+                        <div style="background: var(--primary-dark); padding: 30px; border-radius: 10px; text-align: center;">
+                            <i class="fas fa-map-marked-alt" style="font-size: 3rem; color: var(--accent); margin-bottom: 15px;"></i>
+                            <p>Dongguan City, Guangdong Province, China</p>
+                        </div>
+                        <!-- Replace with Google Maps iframe if needed:
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3686.23456789!2d113.8765432!3d22.9876543!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjLCsDU5JzE1LjYiTiAxMTPCsDUyJzM1LjUiRQ!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus" width="100%" height="300" style="border:0; border-radius: 10px;" allowfullscreen="" loading="lazy"></iframe>
+                        -->
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3 style="margin-bottom: 20px; color: var(--accent);">Contact Form</h3>
+                    <p style="margin-bottom: 30px;">For inquiries, please email us directly at <a href="mailto:2379905894@qq.com" style="color: var(--accent);">2379905894@qq.com</a></p>
+                    <div style="text-align: center; font-size: 5rem; color: var(--accent); opacity: 0.5;">
+                        <i class="fas fa-envelope-open-text"></i>
+                    </div>
+                    <!-- Removed actual form since it won't function in static page -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>HDMCT</h3>
+                    <p>Precision measurement and control solutions for global industries since 2005.</p>
+                    <div class="social-links">
+                        <a href="#contact"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#contact"><i class="fab fa-twitter"></i></a>
+                        <a href="#contact"><i class="fab fa-youtube"></i></a>
+                        <a href="#contact"><i class="fab fa-weixin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
                     <ul>
-                        <li>创建一个以太阳系为背景的个人博客</li>
-                        <li>要求深色主题，现代化设计</li>
-                        <li>包含标题区、文章区和页脚</li>
-                        <li>能够在GitHub Pages上部署</li>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#contact">Contact</a></li>
                     </ul>
-                    
-                    <h3>2. 技术实现</h3>
-                    <p>DeepSeek为我生成了完整的项目结构：</p>
-                    <pre><code>solar-blog/
-├── index.html
-├── css/
-│   └── style.css
-├── js/
-│   ├── solar-system.js
-│   └── blog.js
-└── assets/
-    └── deepseek-logo.png</code></pre>
-                    
-                    <h3>3. 核心功能</h3>
-                    <p>博客包含以下亮点功能：</p>
-                    <div class="features-grid">
-                        <div class="feature-card">
-                            <div class="feature-icon"><i class="fas fa-globe"></i></div>
-                            <h4>3D太阳系背景</h4>
-                            <p>使用Canvas实现的动态太阳系，行星沿轨道运行</p>
-                        </div>
-                        <div class="feature-card">
-                            <div class="feature-icon"><i class="fas fa-moon"></i></div>
-                            <h4>深色主题</h4>
-                            <p>护眼的深色设计，可切换主题</p>
-                        </div>
-                        <div class="feature-card">
-                            <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
-                            <h4>响应式布局</h4>
-                            <p>完美适配各种设备屏幕</p>
-                        </div>
-                        <div class="feature-card">
-                            <div class="feature-icon"><i class="fas fa-rocket"></i></div>
-                            <h4>现代化UI</h4>
-                            <p>简洁美观的界面设计</p>
-                        </div>
-                    </div>
-                    
-                    <h3>4. 部署到GitHub Pages</h3>
-                    <p>DeepSeek还提供了部署指南：</p>
-                    <ol>
-                        <li>在GitHub创建新仓库</li>
-                        <li>将所有文件推送到仓库</li>
-                        <li>在仓库设置中启用GitHub Pages</li>
-                        <li>选择main分支作为源</li>
-                    </ol>
-                    
-                    <p>就这样，一个完整的太空主题博客就诞生了！整个过程只用了不到10分钟，感谢DeepSeek的强大能力。</p>
-                    
-                    <div class="post-footer">
-                        <div class="tags">
-                            <span class="tag">#DeepSeek</span>
-                            <span class="tag">#AI生成</span>
-                            <span class="tag">#前端开发</span>
-                        </div>
-                    </div>
                 </div>
-            </article>
-        </main>
-
-        <!-- 页脚 -->
-        <footer class="footer">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <span> 由DeepSeek生成</span>
+                <div class="footer-col">
+                    <h3>Industries</h3>
+                    <ul>
+                        <li><a href="#products">Chemicals</a></li>
+                        <li><a href="#products">Food & Beverage</a></li>
+                        <li><a href="#products">Pharmaceutical</a></li>
+                    </ul>
                 </div>
-                <div class="footer-links">
-                    <a href="#" class="footer-link"><i class="fab fa-github"></i> GitHub</a>
-                    <a href="#" class="footer-link"><i class="fab fa-twitter"></i> Twitter</a>
-                    <a href="#" class="footer-link"><i class="fas fa-envelope"></i> 联系</a>
+                <div class="footer-col">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#contact">Privacy Policy</a></li>
+                        <li><a href="#contact">Terms of Service</a></li>
+                    </ul>
                 </div>
             </div>
-            <div class="footer-copyright">
-                &copy; 2023 星辰博客. 保留所有权利.
+            <div class="copyright">
+                <p>&copy; 2023 Dongguan Hangda Measurement and Control Technology Co., Ltd. All Rights Reserved.</p>
             </div>
-        </footer>
-    </div>
+        </div>
+    </footer>
 
-    <script src="js/solar-system.js"></script>
-    <script src="js/blog.js"></script>
+    <!-- Back to Top -->
+    <a href="#home" class="back-to-top" id="back-to-top"><i class="fas fa-arrow-up"></i></a>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+        
+        mobileMenu.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileMenu.innerHTML = navMenu.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('#nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileMenu.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Back to top button
+        const backToTop = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('active');
+            } else {
+                backToTop.classList.remove('active');
+            }
+        });
+        
+        // Product tabs
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons and contents
+                tabBtns.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+                
+                // Add active class to clicked button and corresponding content
+                btn.classList.add('active');
+                const tabId = btn.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>

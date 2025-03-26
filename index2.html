@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星辰博客 | DeepSeek生成</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- 太阳系背景画布 -->
+    <canvas id="solarCanvas"></canvas>
+    
+    <!-- 主容器 -->
+    <div class="container">
+        <!-- 头部 -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="blog-title">星辰博客</h1>
+                <nav class="nav">
+                    <a href="#" class="nav-link active">首页</a>
+                    <a href="#" class="nav-link">归档</a>
+                    <a href="#" class="nav-link">关于</a>
+                    <div class="theme-toggle">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <!-- 主要内容 -->
+        <main class="main-content">
+            <article class="blog-post">
+                <div class="post-header">
+                    <h2 class="post-title">如何使用DeepSeek创建这个太空主题博客</h2>
+                    <div class="post-meta">
+                        <span class="post-date"><i class="far fa-calendar-alt"></i> 2023-11-15</span>
+                        <span class="post-category"><i class="fas fa-tag"></i> 技术</span>
+                    </div>
+                </div>
+                <div class="post-content">
+                    <p>欢迎来到我的星辰博客！这个独特的太空主题博客完全由DeepSeek AI生成，下面我将分享创建过程。</p>
+                    
+                    <h3>1. 构思阶段</h3>
+                    <p>首先，我向DeepSeek提出了以下需求：</p>
+                    <ul>
+                        <li>创建一个以太阳系为背景的个人博客</li>
+                        <li>要求深色主题，现代化设计</li>
+                        <li>包含标题区、文章区和页脚</li>
+                        <li>能够在GitHub Pages上部署</li>
+                    </ul>
+                    
+                    <h3>2. 技术实现</h3>
+                    <p>DeepSeek为我生成了完整的项目结构：</p>
+                    <pre><code>solar-blog/
+├── index.html
+├── css/
+│   └── style.css
+├── js/
+│   ├── solar-system.js
+│   └── blog.js
+└── assets/
+    └── deepseek-logo.png</code></pre>
+                    
+                    <h3>3. 核心功能</h3>
+                    <p>博客包含以下亮点功能：</p>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon"><i class="fas fa-globe"></i></div>
+                            <h4>3D太阳系背景</h4>
+                            <p>使用Canvas实现的动态太阳系，行星沿轨道运行</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon"><i class="fas fa-moon"></i></div>
+                            <h4>深色主题</h4>
+                            <p>护眼的深色设计，可切换主题</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+                            <h4>响应式布局</h4>
+                            <p>完美适配各种设备屏幕</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon"><i class="fas fa-rocket"></i></div>
+                            <h4>现代化UI</h4>
+                            <p>简洁美观的界面设计</p>
+                        </div>
+                    </div>
+                    
+                    <h3>4. 部署到GitHub Pages</h3>
+                    <p>DeepSeek还提供了部署指南：</p>
+                    <ol>
+                        <li>在GitHub创建新仓库</li>
+                        <li>将所有文件推送到仓库</li>
+                        <li>在仓库设置中启用GitHub Pages</li>
+                        <li>选择main分支作为源</li>
+                    </ol>
+                    
+                    <p>就这样，一个完整的太空主题博客就诞生了！整个过程只用了不到10分钟，感谢DeepSeek的强大能力。</p>
+                    
+                    <div class="post-footer">
+                        <div class="tags">
+                            <span class="tag">#DeepSeek</span>
+                            <span class="tag">#AI生成</span>
+                            <span class="tag">#前端开发</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </main>
+
+        <!-- 页脚 -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span> 由DeepSeek生成</span>
+                </div>
+                <div class="footer-links">
+                    <a href="#" class="footer-link"><i class="fab fa-github"></i> GitHub</a>
+                    <a href="#" class="footer-link"><i class="fab fa-twitter"></i> Twitter</a>
+                    <a href="#" class="footer-link"><i class="fas fa-envelope"></i> 联系</a>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                &copy; 2023 星辰博客. 保留所有权利.
+            </div>
+        </footer>
+    </div>
+
+    <script src="js/solar-system.js"></script>
+    <script src="js/blog.js"></script>
+</body>
+</html>
