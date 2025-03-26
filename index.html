@@ -5,16 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HDMCT - Precision Weighing & Dosing Systems | Dongguan Hangda Measurement and Control Technology</title>
     <meta name="description" content="HDMCT provides cutting-edge weighing and dosing solutions for industries worldwide. Precision-engineered hopper weighing systems, vacuum conveying technology, and integrated packaging solutions.">
+    
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    
     <style>
         :root {
             --primary: #e6f2ff;
             --primary-dark: #cce5ff;
             --accent: #0077cc;
+            --accent-light: #4da6ff;
             --text: #333;
+            --text-light: #666;
             --light: #f8f9fa;
             --glass: rgba(255, 255, 255, 0.2);
+            --glass-dark: rgba(0, 0, 0, 0.1);
             --shadow: 0 8px 32px rgba(0, 119, 204, 0.1);
+            --shadow-lg: 0 15px 50px rgba(0, 119, 204, 0.2);
             --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            --border-radius: 16px;
+            --border-radius-lg: 24px;
         }
 
         * {
@@ -24,35 +41,44 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', sans-serif;
             line-height: 1.6;
             color: var(--text);
             background-color: var(--primary);
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 30px;
         }
 
-        /* Header */
+        /* Header - Glass Morphism */
         header {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            background: rgba(230, 242, 255, 0.85);
+            backdrop-filter: blur(12px) saturate(180%);
+            -webkit-backdrop-filter: blur(12px) saturate(180%);
             padding: 20px 0;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            backdrop-filter: blur(10px);
-            box-shadow: var(--shadow);
+            box-shadow: 0 4px 30px rgba(0, 119, 204, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
             transition: var(--transition);
         }
 
         header.scrolled {
-            padding: 10px 0;
-            background: rgba(230, 242, 255, 0.9);
+            padding: 12px 0;
+            background: rgba(230, 242, 255, 0.95);
+            box-shadow: 0 10px 30px rgba(0, 119, 204, 0.15);
         }
 
         .header-container {
@@ -63,14 +89,20 @@
 
         .logo {
             font-size: 1.8rem;
-            font-weight: 700;
+            font-weight: 800;
             color: var(--accent);
             display: flex;
             align-items: center;
+            letter-spacing: -0.5px;
         }
 
         .logo span {
-            margin-left: 10px;
+            margin-left: 12px;
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+            color: var(--accent);
         }
 
         nav ul {
@@ -79,7 +111,7 @@
         }
 
         nav ul li {
-            margin-left: 30px;
+            margin-left: 32px;
         }
 
         nav ul li a {
@@ -88,18 +120,20 @@
             font-weight: 500;
             transition: var(--transition);
             position: relative;
-            padding: 5px 0;
+            padding: 8px 0;
+            font-size: 1.05rem;
         }
 
         nav ul li a:after {
             content: '';
             position: absolute;
             width: 0;
-            height: 2px;
+            height: 3px;
             background: var(--accent);
             bottom: 0;
             left: 0;
             transition: var(--transition);
+            border-radius: 3px;
         }
 
         nav ul li a:hover:after {
@@ -108,64 +142,85 @@
 
         .mobile-menu {
             display: none;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             cursor: pointer;
+            color: var(--accent);
+            z-index: 1001;
         }
 
-        /* Hero Section */
+        /* Hero Section - Animated Gradient Background */
         .hero {
             height: 100vh;
+            min-height: 800px;
             display: flex;
             align-items: center;
-            background: var(--primary);
             position: relative;
             overflow: hidden;
-            text-align: center;
+            background: linear-gradient(135deg, rgba(230, 242, 255, 0.9), rgba(204, 229, 255, 0.9));
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1605152276897-4f618f831968?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+            opacity: 0.15;
+            z-index: 0;
         }
 
         .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
+            max-width: 700px;
             z-index: 2;
-            padding: 0 20px;
+            position: relative;
         }
 
         .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            line-height: 1.2;
+            font-size: 3.8rem;
+            margin-bottom: 24px;
+            line-height: 1.15;
             color: var(--accent);
+            letter-spacing: -1px;
         }
 
         .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
+            font-size: 1.25rem;
+            margin-bottom: 36px;
             opacity: 0.9;
+            color: var(--text-light);
+            max-width: 600px;
         }
 
         .btn {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             background: var(--accent);
             color: white;
-            padding: 12px 30px;
+            padding: 14px 36px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
             transition: var(--transition);
             border: 2px solid var(--accent);
+            font-size: 1.05rem;
+            box-shadow: 0 4px 15px rgba(0, 119, 204, 0.3);
         }
 
         .btn:hover {
             background: transparent;
             color: var(--accent);
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 119, 204, 0.2);
+            box-shadow: 0 10px 25px rgba(0, 119, 204, 0.3);
         }
 
         .btn-outline {
             background: transparent;
             color: var(--accent);
-            margin-left: 15px;
+            margin-left: 16px;
+            box-shadow: none;
         }
 
         .btn-outline:hover {
@@ -173,38 +228,84 @@
             color: white;
         }
 
+        .btn i {
+            margin-left: 8px;
+            font-size: 0.9rem;
+        }
+
+        /* Floating particles background */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            background: var(--accent-light);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
         /* About Section */
         .section {
-            padding: 100px 0;
+            padding: 120px 0;
+            position: relative;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 80px;
             position: relative;
         }
 
         .section-title h2 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             color: var(--accent);
             display: inline-block;
             position: relative;
+            letter-spacing: -1px;
         }
 
         .section-title h2:after {
             content: '';
             position: absolute;
-            width: 50%;
-            height: 3px;
+            width: 60px;
+            height: 4px;
             background: var(--accent);
-            bottom: -10px;
-            left: 25%;
+            bottom: -16px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            max-width: 700px;
+            margin: 24px auto 0;
+            color: var(--text-light);
+            font-size: 1.1rem;
         }
 
         .about-content {
             display: flex;
             align-items: center;
-            gap: 50px;
+            gap: 60px;
         }
 
         .about-text {
@@ -212,97 +313,155 @@
         }
 
         .about-text h3 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
+            font-size: 2rem;
+            margin-bottom: 24px;
             color: var(--accent);
+            line-height: 1.3;
         }
 
         .about-text p {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            color: var(--text-light);
+            font-size: 1.1rem;
         }
 
-        .about-icon {
+        .about-image {
             flex: 1;
-            text-align: center;
-            font-size: 10rem;
-            color: var(--accent);
-            opacity: 0.7;
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition);
+            position: relative;
+            aspect-ratio: 1/0.8;
         }
 
-        /* Stats */
+        .about-image:hover {
+            transform: scale(1.02);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Stats - Animated counters */
         .stats {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 30px;
-            margin-top: 50px;
+            margin-top: 60px;
         }
 
         .stat-item {
-            background: var(--light);
-            padding: 30px;
-            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 40px 30px;
+            border-radius: var(--border-radius);
             text-align: center;
-            backdrop-filter: blur(5px);
-            background: var(--glass);
+            backdrop-filter: blur(8px);
             box-shadow: var(--shadow);
             transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
         .stat-item:hover {
             transform: translateY(-10px);
-        }
-
-        .stat-icon {
-            font-size: 2.5rem;
-            color: var(--accent);
-            margin-bottom: 15px;
+            box-shadow: var(--shadow-lg);
+            background: rgba(255, 255, 255, 0.9);
         }
 
         .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
+            font-size: 3rem;
+            font-weight: 800;
             color: var(--accent);
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .stat-text {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            font-weight: 500;
         }
 
         /* Products */
         .products {
-            background: var(--primary-dark);
+            background: linear-gradient(to bottom, var(--primary-dark), var(--primary));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .products::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(0,119,204,0.03)" d="M0,0 L100,0 L100,100 L0,100 Z" /></svg>');
+            background-size: cover;
+            opacity: 0.5;
+            z-index: 0;
         }
 
         .product-tabs {
             display: flex;
             justify-content: center;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
             flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
         }
 
         .tab-btn {
-            padding: 12px 25px;
+            padding: 14px 32px;
             background: transparent;
             border: none;
             border-bottom: 3px solid transparent;
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             font-weight: 600;
             color: var(--text);
             cursor: pointer;
             transition: var(--transition);
-            margin: 0 10px;
+            margin: 0 12px;
+            border-radius: 8px 8px 0 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tab-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0, 119, 204, 0.1), transparent);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .tab-btn:hover::before {
+            opacity: 1;
         }
 
         .tab-btn.active {
             color: var(--accent);
             border-bottom: 3px solid var(--accent);
+            background: rgba(255, 255, 255, 0.3);
         }
 
         .tab-content {
             display: none;
-            animation: fadeIn 0.5s ease;
+            animation: fadeIn 0.6s ease;
+            position: relative;
+            z-index: 1;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .tab-content.active {
@@ -311,50 +470,68 @@
 
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
         }
 
         .product-card {
-            background: white;
-            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: var(--border-radius);
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: var(--transition);
-            text-align: center;
-            padding: 30px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
         }
 
         .product-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 119, 204, 0.2);
+            box-shadow: var(--shadow-lg);
+            background: white;
         }
 
-        .product-icon {
-            font-size: 4rem;
-            color: var(--accent);
-            margin-bottom: 20px;
+        .product-image {
+            height: 280px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+
+        .product-info {
+            padding: 30px;
         }
 
         .product-info h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
+            font-size: 1.6rem;
+            margin-bottom: 18px;
             color: var(--accent);
+            line-height: 1.3;
         }
 
         .product-info p {
-            margin-bottom: 20px;
+            margin-bottom: 24px;
+            color: var(--text-light);
         }
 
         .features {
-            margin-top: 20px;
-            text-align: left;
+            margin-top: 24px;
         }
 
         .features li {
-            margin-bottom: 8px;
+            margin-bottom: 12px;
             position: relative;
-            padding-left: 25px;
+            padding-left: 30px;
+            color: var(--text-light);
         }
 
         .features li:before {
@@ -363,163 +540,344 @@
             left: 0;
             color: var(--accent);
             font-weight: bold;
+            font-size: 1.1rem;
         }
 
-        /* Auto-scrolling showcase */
+        /* Auto-scrolling showcase - Enhanced */
         .showcase {
-            height: 300px;
+            height: 600px;
             position: relative;
             overflow: hidden;
-            margin: 80px 0;
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-            background: var(--accent);
-            color: white;
+            margin: 100px 0;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .showcase-slider {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 0 40px;
+            height: 100%;
+            transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        .showcase-slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .showcase-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .showcase-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
+            color: white;
+            padding: 60px;
+            backdrop-filter: blur(2px);
         }
 
         .showcase-content h3 {
-            font-size: 2rem;
-            margin-bottom: 15px;
+            font-size: 2.4rem;
+            margin-bottom: 20px;
+            line-height: 1.3;
         }
 
-        /* Other Products */
+        .showcase-content p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            opacity: 0.9;
+        }
+
+        .showcase-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 30px;
+            z-index: 10;
+        }
+
+        .showcase-nav button {
+            background: rgba(255, 255, 255, 0.25);
+            border: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            backdrop-filter: blur(5px);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .showcase-nav button:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(1.1);
+        }
+
+        .showcase-indicators {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 10;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .indicator.active {
+            background: white;
+            transform: scale(1.2);
+        }
+
+        /* Other Products - Glass cards */
         .other-products {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
+            position: relative;
+            z-index: 1;
         }
 
         .other-product-card {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 40px 30px;
+            border-radius: var(--border-radius);
             box-shadow: var(--shadow);
             text-align: center;
             transition: var(--transition);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
         .other-product-card:hover {
             transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+            background: rgba(255, 255, 255, 0.95);
         }
 
         .other-product-card i {
-            font-size: 3rem;
+            font-size: 3.5rem;
             color: var(--accent);
-            margin-bottom: 20px;
+            margin-bottom: 24px;
+            transition: var(--transition);
         }
 
-        /* Contact */
+        .other-product-card:hover i {
+            transform: scale(1.1);
+        }
+
+        .other-product-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+            color: var(--accent);
+        }
+
+        .other-product-card p {
+            color: var(--text-light);
+        }
+
+        /* Contact Section - Glass form */
         .contact {
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(0,119,204,0.05)" d="M0,0 L100,0 L100,100 L0,100 Z" /></svg>');
+            background-size: cover;
+            opacity: 0.3;
+            z-index: 0;
         }
 
         .contact-container {
             display: flex;
-            gap: 50px;
+            gap: 60px;
+            position: relative;
+            z-index: 1;
         }
 
         .contact-info {
             flex: 1;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 50px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
         }
 
         .contact-info h3 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
+            font-size: 2rem;
+            margin-bottom: 30px;
             color: var(--accent);
         }
 
         .contact-details {
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
 
         .contact-item {
             display: flex;
-            align-items: center;
-            margin-bottom: 15px;
+            align-items: flex-start;
+            margin-bottom: 25px;
         }
 
         .contact-item i {
             font-size: 1.5rem;
             color: var(--accent);
-            margin-right: 15px;
+            margin-right: 20px;
             width: 30px;
             text-align: center;
+            padding-top: 4px;
+        }
+
+        .contact-item span {
+            flex: 1;
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        .map {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            height: 300px;
+        }
+
+        .map iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
         }
 
         .contact-form {
             flex: 1;
-            background: white;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: var(--shadow);
+            background: rgba(255, 255, 255, 0.9);
+            padding: 50px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-lg);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
+            margin-bottom: 12px;
+            font-weight: 600;
+            color: var(--text);
         }
 
         .form-group input,
         .form-group textarea {
             width: 100%;
-            padding: 12px 15px;
+            padding: 16px 20px;
             border: 1px solid #ddd;
-            border-radius: 8px;
+            border-radius: 10px;
             font-family: inherit;
             transition: var(--transition);
+            background: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
         }
 
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
             border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(0, 119, 204, 0.1);
+            box-shadow: 0 0 0 3px rgba(0, 119, 204, 0.2);
+            background: white;
         }
 
         .form-group textarea {
-            min-height: 120px;
+            min-height: 150px;
             resize: vertical;
         }
 
-        /* Footer */
+        /* Footer - Gradient background */
         footer {
-            background: var(--accent);
+            background: linear-gradient(135deg, var(--accent), #006bb3);
             color: white;
-            padding: 50px 0 20px;
+            padding: 80px 0 30px;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(255,255,255,0.05)" d="M0,0 L100,0 L100,100 L0,100 Z" /></svg>');
+            background-size: cover;
+            opacity: 0.5;
+            z-index: 0;
         }
 
         .footer-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin-bottom: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+            position: relative;
+            z-index: 1;
         }
 
         .footer-col h3 {
-            font-size: 1.3rem;
-            margin-bottom: 20px;
+            font-size: 1.4rem;
+            margin-bottom: 25px;
             position: relative;
-            padding-bottom: 10px;
+            padding-bottom: 15px;
         }
 
         .footer-col h3:after {
             content: '';
             position: absolute;
-            width: 40px;
-            height: 2px;
-            background: white;
+            width: 50px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.5);
             bottom: 0;
             left: 0;
+            border-radius: 3px;
+        }
+
+        .footer-col p {
+            opacity: 0.8;
+            margin-bottom: 20px;
+            line-height: 1.7;
         }
 
         .footer-col ul {
@@ -527,35 +885,64 @@
         }
 
         .footer-col ul li {
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
         .footer-col ul li a {
             color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
             transition: var(--transition);
+            display: inline-block;
         }
 
         .footer-col ul li a:hover {
             color: white;
-            padding-left: 5px;
+            transform: translateX(5px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+            font-size: 1.2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .social-links a:hover {
+            background: white;
+            color: var(--accent);
+            transform: translateY(-5px);
         }
 
         .copyright {
             text-align: center;
-            padding-top: 20px;
+            padding-top: 30px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             opacity: 0.8;
+            position: relative;
+            z-index: 1;
         }
 
-        /* Back to top */
+        /* Back to top - Floating button */
         .back-to-top {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
+            bottom: 40px;
+            right: 40px;
+            width: 60px;
+            height: 60px;
             background: var(--accent);
             color: white;
             border-radius: 50%;
@@ -563,11 +950,14 @@
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            box-shadow: 0 5px 15px rgba(0, 119, 204, 0.3);
+            box-shadow: 0 8px 25px rgba(0, 119, 204, 0.4);
             opacity: 0;
             visibility: hidden;
             transition: var(--transition);
             z-index: 999;
+            border: none;
+            cursor: pointer;
+            font-size: 1.3rem;
         }
 
         .back-to-top.active {
@@ -576,52 +966,81 @@
         }
 
         .back-to-top:hover {
-            transform: translateY(-5px);
+            transform: translateY(-5px) scale(1.1);
             background: #006bb3;
         }
 
-        /* Animations */
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-
-        .floating {
-            animation: float 6s ease-in-out infinite;
-        }
-
         /* Responsive */
-        @media (max-width: 992px) {
-            .about-content {
-                flex-direction: column;
+        @media (max-width: 1200px) {
+            .hero h1 {
+                font-size: 3.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.4rem;
             }
             
             .stats {
                 grid-template-columns: repeat(2, 1fr);
             }
+        }
+
+        @media (max-width: 992px) {
+            .hero {
+                min-height: 700px;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-image {
+                width: 100%;
+                max-width: 600px;
+                margin: 0 auto;
+            }
             
             .contact-container {
                 flex-direction: column;
             }
+            
+            .contact-info, .contact-form {
+                width: 100%;
+            }
         }
 
         @media (max-width: 768px) {
+            .hero {
+                min-height: 600px;
+            }
+            
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.4rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
             }
             
             nav ul {
                 position: fixed;
-                top: 80px;
+                top: 0;
                 left: -100%;
-                width: 100%;
-                height: calc(100vh - 80px);
+                width: 80%;
+                max-width: 300px;
+                height: 100vh;
                 background: var(--primary);
                 flex-direction: column;
-                align-items: center;
+                align-items: flex-start;
                 justify-content: center;
+                padding: 80px 40px;
                 transition: var(--transition);
-                z-index: 999;
+                z-index: 1000;
+                box-shadow: 10px 0 30px rgba(0, 0, 0, 0.1);
             }
             
             nav ul.active {
@@ -629,7 +1048,11 @@
             }
             
             nav ul li {
-                margin: 15px 0;
+                margin: 20px 0;
+            }
+            
+            nav ul li a {
+                font-size: 1.2rem;
             }
             
             .mobile-menu {
@@ -643,49 +1066,82 @@
             .btn-container {
                 display: flex;
                 flex-direction: column;
+                gap: 15px;
             }
             
             .btn-outline {
                 margin-left: 0;
-                margin-top: 15px;
+            }
+            
+            .showcase {
+                height: 500px;
+                margin: 60px 0;
+            }
+            
+            .showcase-content {
+                padding: 40px;
+            }
+            
+            .showcase-content h3 {
+                font-size: 1.8rem;
+            }
+            
+            .showcase-content p {
+                font-size: 1rem;
             }
         }
 
         @media (max-width: 576px) {
+            .container {
+                padding: 0 20px;
+            }
+            
             .hero h1 {
                 font-size: 2rem;
             }
             
+            .section {
+                padding: 80px 0;
+            }
+            
             .stats {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .product-grid {
                 grid-template-columns: 1fr;
             }
             
-            .product-tabs {
-                flex-direction: column;
-                align-items: center;
+            .showcase {
+                height: 400px;
             }
             
-            .tab-btn {
-                margin: 5px 0;
+            .showcase-content {
+                padding: 30px;
             }
             
-            .about-icon {
-                font-size: 6rem;
+            .showcase-content h3 {
+                font-size: 1.5rem;
+                margin-bottom: 15px;
             }
             
-            .product-icon {
-                font-size: 3rem;
+            .back-to-top {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 1.1rem;
             }
         }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <!-- Header -->
     <header id="header">
         <div class="container header-container">
             <div class="logo">
-                <i class="fas fa-balance-scale-right"></i>
+                <i class="fas fa-balance-scale-right logo-icon"></i>
                 <span>HDMCT</span>
             </div>
             <nav>
@@ -704,12 +1160,15 @@
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <div class="hero-content">
-            <h1>Precision Weighing & Dosing Solutions</h1>
-            <p>HDMCT delivers cutting-edge industrial measurement and control systems with unmatched accuracy and reliability for global industries.</p>
-            <div class="btn-container">
-                <a href="#products" class="btn">Explore Products</a>
-                <a href="#contact" class="btn btn-outline">Contact Us</a>
+        <div class="particles" id="particles"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1>Precision Weighing & Dosing Solutions</h1>
+                <p>HDMCT delivers cutting-edge industrial measurement and control systems with unmatched accuracy and reliability for global industries.</p>
+                <div class="btn-container">
+                    <a href="#products" class="btn">Explore Products <i class="fas fa-arrow-right"></i></a>
+                    <a href="#contact" class="btn btn-outline">Contact Us <i class="fas fa-paper-plane"></i></a>
+                </div>
             </div>
         </div>
     </section>
@@ -719,6 +1178,7 @@
         <div class="container">
             <div class="section-title">
                 <h2>About HDMCT</h2>
+                <p>Innovating measurement technology since 2005 with precision engineering and cutting-edge solutions</p>
             </div>
             <div class="about-content">
                 <div class="about-text">
@@ -727,32 +1187,25 @@
                     <p>Our cutting-edge technology and engineering expertise have positioned us as the preferred partner for Fortune 500 companies across the chemical, food processing, pharmaceutical, and manufacturing sectors.</p>
                     <p>HDMCT's ISO 9001-certified manufacturing facilities combine German engineering precision with Chinese manufacturing efficiency, delivering systems with micron-level accuracy that operate flawlessly in the most demanding industrial environments.</p>
                 </div>
-                <div class="about-icon floating">
-                    <i class="fas fa-industry"></i>
-                    <!-- Replace with image if needed: 
-                    <img src="https://images.unsplash.com/photo-1581092921461-39b2f2b99a73?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="HDMCT Factory">
-                    -->
+                <div class="about-image floating">
+                    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="HDMCT Factory">
                 </div>
             </div>
             <div class="stats">
                 <div class="stat-item">
-                    <div class="stat-icon"><i class="fas fa-cogs"></i></div>
-                    <div class="stat-number">1500+</div>
+                    <div class="stat-number" data-count="1500">0</div>
                     <div class="stat-text">Systems Installed</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-icon"><i class="fas fa-users"></i></div>
-                    <div class="stat-number">98.7%</div>
+                    <div class="stat-number" data-count="98.7">0</div>
                     <div class="stat-text">Client Retention</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-icon"><i class="fas fa-globe"></i></div>
-                    <div class="stat-number">40+</div>
+                    <div class="stat-number" data-count="40">0</div>
                     <div class="stat-text">Countries Served</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-icon"><i class="fas fa-tachometer-alt"></i></div>
-                    <div class="stat-number">0.01%</div>
+                    <div class="stat-number" data-count="0.01">0</div>
                     <div class="stat-text">Measurement Error</div>
                 </div>
             </div>
@@ -764,21 +1217,20 @@
         <div class="container">
             <div class="section-title">
                 <h2>Our Products</h2>
+                <p>Advanced solutions tailored for your industrial measurement and control needs</p>
             </div>
             
             <div class="product-tabs">
                 <button class="tab-btn active" data-tab="weighing">Weighing Systems</button>
                 <button class="tab-btn" data-tab="dosing">Dosing Systems</button>
+                <button class="tab-btn" data-tab="packaging">Packaging Solutions</button>
             </div>
             
             <div class="tab-content active" id="weighing">
                 <div class="product-grid">
                     <div class="product-card">
-                        <div class="product-icon">
-                            <i class="fas fa-weight-hanging"></i>
-                            <!-- Replace with image if needed:
-                            <img src="https://images.unsplash.com/photo-1581093057305-25a6129f1c0e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Hopper Weighing System">
-                            -->
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Hopper Weighing System">
                         </div>
                         <div class="product-info">
                             <h3>Hopper Weighing System</h3>
@@ -793,11 +1245,8 @@
                     </div>
                     
                     <div class="product-card">
-                        <div class="product-icon">
-                            <i class="fas fa-wind"></i>
-                            <!-- Replace with image if needed:
-                            <img src="https://images.unsplash.com/photo-1581093057927-02d65d8d0e39?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Vacuum Conveying System">
-                            -->
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1605001011156-cbf0b0f67a51?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Vacuum Conveying & Batching System">
                         </div>
                         <div class="product-info">
                             <h3>Vacuum Conveying & Batching System</h3>
@@ -812,11 +1261,8 @@
                     </div>
                     
                     <div class="product-card">
-                        <div class="product-icon">
-                            <i class="fas fa-hand-paper"></i>
-                            <!-- Replace with image if needed:
-                            <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Manual Batching System">
-                            -->
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Manual Batching System">
                         </div>
                         <div class="product-info">
                             <h3>Manual Batching System</h3>
@@ -829,36 +1275,14 @@
                             </ul>
                         </div>
                     </div>
-                    
-                    <div class="product-card">
-                        <div class="product-icon">
-                            <i class="fas fa-boxes"></i>
-                            <!-- Replace with image if needed:
-                            <img src="https://images.unsplash.com/photo-1581093053655-4a8b0e8a9f0f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Packaging Machine">
-                            -->
-                        </div>
-                        <div class="product-info">
-                            <h3>Integrated Big Bag & Small Bag Packaging</h3>
-                            <p>Complete end-of-line solution with automatic weighing, filling, and sealing.</p>
-                            <ul class="features">
-                                <li>Simultaneous multi-format packaging</li>
-                                <li>Automatic bag placement and removal</li>
-                                <li>Integrated checkweigher and metal detection</li>
-                                <li>Output up to 60 bags/minute</li>
-                            </ul>
-                        </div>
-                    </div>
                 </div>
             </div>
             
             <div class="tab-content" id="dosing">
                 <div class="product-grid">
                     <div class="product-card">
-                        <div class="product-icon">
-                            <i class="fas fa-tint"></i>
-                            <!-- Replace with image if needed:
-                            <img src="https://images.unsplash.com/photo-1581093057321-0c8a5f1c8b5e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Liquid Dosing System">
-                            -->
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1627855437693-dcc7b0c4ba7b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Liquid Dosing System">
                         </div>
                         <div class="product-info">
                             <h3>Liquid Dosing System</h3>
@@ -873,11 +1297,8 @@
                     </div>
                     
                     <div class="product-card">
-                        <div class="product-icon">
-                            <i class="fas fa-poo-storm"></i>
-                            <!-- Replace with image if needed:
-                            <img src="https://images.unsplash.com/photo-1581093057305-25a6129f1c0e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Powder Dosing System">
-                            -->
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1581093450021-4a7360e9a3c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1950&q=80" alt="Powder Dosing System">
                         </div>
                         <div class="product-info">
                             <h3>Powder Dosing System</h3>
@@ -892,11 +1313,8 @@
                     </div>
                     
                     <div class="product-card">
-                        <div class="product-icon">
-                            <i class="fas fa-atom"></i>
-                            <!-- Replace with image if needed:
-                            <img src="https://images.unsplash.com/photo-1581093057927-02d65d8d0e39?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Multi-Component Dosing">
-                            -->
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1350&q=80" alt="Multi-Component Dosing">
                         </div>
                         <div class="product-info">
                             <h3>Multi-Component Dosing</h3>
@@ -912,28 +1330,81 @@
                 </div>
             </div>
             
-            <!-- Product Showcase -->
-            <div class="showcase">
-                <div class="showcase-content">
-                    <i class="fas fa-network-wired" style="font-size: 3rem; margin-bottom: 20px;"></i>
-                    <h3>Industry 4.0 Ready</h3>
-                    <p>All HDMCT systems come with IoT connectivity for remote monitoring, predictive maintenance, and seamless integration with your MES/ERP systems.</p>
-                </div>
-                <!-- Replace with image slider if needed:
-                <div class="showcase-slider" id="showcase-slider">
-                    <div class="showcase-slide">
-                        <img src="https://images.unsplash.com/photo-1581093057305-25a6129f1c0e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="HDMCT System">
-                        <div class="showcase-content">
-                            <h3>Industry 4.0 Ready</h3>
-                            <p>All HDMCT systems come with IoT connectivity...</p>
+            <div class="tab-content" id="packaging">
+                <div class="product-grid">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Integrated Packaging Machine">
+                        </div>
+                        <div class="product-info">
+                            <h3>Integrated Big Bag Packaging</h3>
+                            <p>Complete end-of-line solution with automatic weighing, filling, and sealing.</p>
+                            <ul class="features">
+                                <li>Capacity up to 2000kg per bag</li>
+                                <li>Automatic bag placement and removal</li>
+                                <li>Integrated dust collection system</li>
+                                <li>Output up to 20 bags/hour</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1605001011156-cbf0b0f67a51?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Small Bag Packaging">
+                        </div>
+                        <div class="product-info">
+                            <h3>Small Bag Packaging</h3>
+                            <p>High-speed automated packaging for small format products.</p>
+                            <ul class="features">
+                                <li>Simultaneous multi-format packaging</li>
+                                <li>Integrated checkweigher and metal detection</li>
+                                <li>Optional robotic palletizing</li>
+                                <li>Output up to 60 bags/minute</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
-                -->
+            </div>
+            
+            <!-- Product Showcase -->
+            <div class="showcase">
+                <div class="showcase-slider" id="showcase-slider">
+                    <div class="showcase-slide">
+                        <img src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="HDMCT System in Operation">
+                        <div class="showcase-content">
+                            <h3>Industry 4.0 Ready</h3>
+                            <p>All HDMCT systems come with IoT connectivity for remote monitoring, predictive maintenance, and seamless integration with your MES/ERP systems.</p>
+                        </div>
+                    </div>
+                    <div class="showcase-slide">
+                        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Precision Engineering">
+                        <div class="showcase-content">
+                            <h3>Swiss-Level Precision</h3>
+                            <p>Our proprietary weighing cells achieve measurement stability within 0.01% of full scale, even in high-vibration industrial environments.</p>
+                        </div>
+                    </div>
+                    <div class="showcase-slide">
+                        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Global Support">
+                        <div class="showcase-content">
+                            <h3>Global Support Network</h3>
+                            <p>With service centers in 12 countries and 24/7 remote diagnostics, we guarantee maximum uptime for your operations worldwide.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="showcase-nav">
+                    <button id="showcase-prev"><i class="fas fa-chevron-left"></i></button>
+                    <button id="showcase-next"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                <div class="showcase-indicators" id="showcase-indicators">
+                    <div class="indicator active"></div>
+                    <div class="indicator"></div>
+                    <div class="indicator"></div>
+                </div>
             </div>
             
             <div class="section-title">
-                <h2>Other Products</h2>
+                <h2>Other Solutions</h2>
+                <p>Comprehensive measurement and control solutions for your production needs</p>
             </div>
             <div class="other-products">
                 <div class="other-product-card">
@@ -965,6 +1436,7 @@
         <div class="container">
             <div class="section-title">
                 <h2>Contact Us</h2>
+                <p>Get in touch with our team for customized solutions and support</p>
             </div>
             <div class="contact-container">
                 <div class="contact-info">
@@ -982,24 +1454,39 @@
                             <i class="fas fa-phone-alt"></i>
                             <span>+86 769 8322 5894</span>
                         </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <span>Monday - Friday: 8:30 AM - 5:30 PM (GMT+8)</span>
+                        </div>
                     </div>
                     <div class="map">
-                        <div style="background: var(--primary-dark); padding: 30px; border-radius: 10px; text-align: center;">
-                            <i class="fas fa-map-marked-alt" style="font-size: 3rem; color: var(--accent); margin-bottom: 15px;"></i>
-                            <p>Dongguan City, Guangdong Province, China</p>
-                        </div>
-                        <!-- Replace with Google Maps iframe if needed:
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3686.23456789!2d113.8765432!3d22.9876543!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjLCsDU5JzE1LjYiTiAxMTPCsDUyJzM1LjUiRQ!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus" width="100%" height="300" style="border:0; border-radius: 10px;" allowfullscreen="" loading="lazy"></iframe>
-                        -->
                     </div>
                 </div>
                 <div class="contact-form">
-                    <h3 style="margin-bottom: 20px; color: var(--accent);">Contact Form</h3>
-                    <p style="margin-bottom: 30px;">For inquiries, please email us directly at <a href="mailto:2379905894@qq.com" style="color: var(--accent);">2379905894@qq.com</a></p>
-                    <div style="text-align: center; font-size: 5rem; color: var(--accent); opacity: 0.5;">
-                        <i class="fas fa-envelope-open-text"></i>
-                    </div>
-                    <!-- Removed actual form since it won't function in static page -->
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="company">Company</label>
+                            <input type="text" id="company" name="company">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">How can we help you?</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message <i class="fas fa-paper-plane"></i></button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -1013,34 +1500,40 @@
                     <h3>HDMCT</h3>
                     <p>Precision measurement and control solutions for global industries since 2005.</p>
                     <div class="social-links">
-                        <a href="#contact"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#contact"><i class="fab fa-twitter"></i></a>
-                        <a href="#contact"><i class="fab fa-youtube"></i></a>
-                        <a href="#contact"><i class="fab fa-weixin"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-weixin"></i></a>
                     </div>
                 </div>
                 <div class="footer-col">
-                    <h3>Quick Links</h3>
+                    <h3>Products</h3>
                     <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#products">Products</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#">Weighing Systems</a></li>
+                        <li><a href="#">Dosing Systems</a></li>
+                        <li><a href="#">Packaging Machines</a></li>
+                        <li><a href="#">Conveying Solutions</a></li>
+                        <li><a href="#">Automation</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h3>Industries</h3>
                     <ul>
-                        <li><a href="#products">Chemicals</a></li>
-                        <li><a href="#products">Food & Beverage</a></li>
-                        <li><a href="#products">Pharmaceutical</a></li>
+                        <li><a href="#">Chemicals</a></li>
+                        <li><a href="#">Food & Beverage</a></li>
+                        <li><a href="#">Pharmaceutical</a></li>
+                        <li><a href="#">Plastics</a></li>
+                        <li><a href="#">Agriculture</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h3>Legal</h3>
+                    <h3>Company</h3>
                     <ul>
-                        <li><a href="#contact">Privacy Policy</a></li>
-                        <li><a href="#contact">Terms of Service</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">News</a></li>
+                        <li><a href="#">Case Studies</a></li>
+                        <li><a href="#">Contact</a></li>
                     </ul>
                 </div>
             </div>
@@ -1051,7 +1544,7 @@
     </footer>
 
     <!-- Back to Top -->
-    <a href="#home" class="back-to-top" id="back-to-top"><i class="fas fa-arrow-up"></i></a>
+    <button class="back-to-top" id="back-to-top"><i class="fas fa-arrow-up"></i></button>
 
     <script>
         // Mobile Menu Toggle
@@ -1109,6 +1602,59 @@
             });
         });
         
+        // Product showcase slider
+        const slider = document.getElementById('showcase-slider');
+        const prevBtn = document.getElementById('showcase-prev');
+        const nextBtn = document.getElementById('showcase-next');
+        const indicators = document.querySelectorAll('.indicator');
+        let currentSlide = 0;
+        const slideCount = document.querySelectorAll('.showcase-slide').length;
+        let autoSlideInterval;
+        
+        function goToSlide(index) {
+            if (index < 0) index = slideCount - 1;
+            if (index >= slideCount) index = 0;
+            
+            currentSlide = index;
+            slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            // Update indicators
+            indicators.forEach((indicator, i) => {
+                if (i === currentSlide) {
+                    indicator.classList.add('active');
+                } else {
+                    indicator.classList.remove('active');
+                }
+            });
+            
+            // Reset autoslide timer
+            clearInterval(autoSlideInterval);
+            startAutoSlide();
+        }
+        
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(() => goToSlide(currentSlide + 1), 6000);
+        }
+        
+        prevBtn.addEventListener('click', () => goToSlide(currentSlide - 1));
+        nextBtn.addEventListener('click', () => goToSlide(currentSlide + 1));
+        
+        // Click on indicators
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => goToSlide(index));
+        });
+        
+        // Start autoslide
+        startAutoSlide();
+        
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your message! We will contact you soon.');
+            contactForm.reset();
+        });
+        
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
@@ -1124,6 +1670,147 @@
                     });
                 }
             });
+        });
+        
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 20;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random size between 5px and 15px
+                const size = Math.random() * 10 + 5;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Random position
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                
+                // Random opacity
+                particle.style.opacity = Math.random() * 0.3;
+                
+                // Random animation duration between 10s and 30s
+                const duration = Math.random() * 20 + 10;
+                particle.style.animationDuration = `${duration}s`;
+                
+                // Random delay
+                particle.style.animationDelay = `${Math.random() * 5}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        // Animated counter for stats
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            const speed = 200; // The lower the faster
+            
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-count');
+                const count = +counter.innerText;
+                const increment = target / speed;
+                
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + increment);
+                    setTimeout(animateCounters, 1);
+                } else {
+                    counter.innerText = target;
+                    
+                    // Add % symbol for percentage values
+                    if (counter.getAttribute('data-count').includes('.')) {
+                        counter.innerText = target + '%';
+                    }
+                }
+            });
+        }
+        
+        // Initialize GSAP animations
+        function initAnimations() {
+            // Animate hero content
+            gsap.from('.hero-content h1', {
+                duration: 1,
+                y: 50,
+                opacity: 0,
+                ease: "power3.out"
+            });
+            
+            gsap.from('.hero-content p', {
+                duration: 1,
+                y: 50,
+                opacity: 0,
+                delay: 0.3,
+                ease: "power3.out"
+            });
+            
+            gsap.from('.btn-container', {
+                duration: 1,
+                y: 50,
+                opacity: 0,
+                delay: 0.6,
+                ease: "power3.out"
+            });
+            
+            // Animate sections on scroll
+            gsap.utils.toArray('.section').forEach(section => {
+                gsap.from(section, {
+                    scrollTrigger: {
+                        trigger: section,
+                        start: "top 80%",
+                        toggleActions: "play none none none"
+                    },
+                    opacity: 0,
+                    y: 50,
+                    duration: 0.8,
+                    ease: "power2.out"
+                });
+            });
+            
+            // Animate product cards and stats
+            gsap.utils.toArray('.product-card, .stat-item, .other-product-card').forEach(item => {
+                gsap.from(item, {
+                    scrollTrigger: {
+                        trigger: item,
+                        start: "top 80%",
+                        toggleActions: "play none none none"
+                    },
+                    opacity: 0,
+                    y: 50,
+                    duration: 0.8,
+                    ease: "power2.out"
+                });
+            });
+            
+            // Floating animation for about image
+            gsap.to('.floating', {
+                y: 20,
+                duration: 3,
+                repeat: -1,
+                yoyo: true,
+                ease: "sine.inOut"
+            });
+        }
+        
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+            initAnimations();
+            
+            // Start counter animation when stats section is in view
+            const statsSection = document.querySelector('#about');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounters();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            observer.observe(statsSection);
         });
     </script>
 </body>
