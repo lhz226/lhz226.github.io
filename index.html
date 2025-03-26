@@ -108,10 +108,12 @@
         nav ul {
             display: flex;
             list-style: none;
+            align-items: center;
         }
 
         nav ul li {
             margin-left: 32px;
+            position: relative;
         }
 
         nav ul li a {
@@ -148,10 +150,11 @@
             z-index: 1001;
         }
 
-        /* Language switcher */
+        /* Language switcher - moved next to Contact */
         .language-switcher {
-            margin-left: 30px;
+            margin-left: 15px;
             position: relative;
+            display: inline-block;
         }
 
         .language-btn {
@@ -165,6 +168,7 @@
             padding: 8px 12px;
             border-radius: 5px;
             transition: var(--transition);
+            font-size: 1.05rem;
         }
 
         .language-btn:hover {
@@ -173,6 +177,7 @@
 
         .language-btn i {
             margin-right: 8px;
+            font-size: 0.9rem;
         }
 
         .language-dropdown {
@@ -1147,8 +1152,20 @@
                 font-size: 1rem;
             }
             
+            /* Mobile language switcher */
             .language-switcher {
-                margin-left: 15px;
+                margin: 20px 0;
+                width: 100%;
+            }
+            
+            .language-btn {
+                justify-content: center;
+                width: 100%;
+            }
+            
+            .language-dropdown {
+                width: 100%;
+                left: 0;
             }
         }
 
@@ -1211,17 +1228,17 @@
                     <li><a href="#about" data-en="About" data-cn="关于我们">About</a></li>
                     <li><a href="#products" data-en="Products" data-cn="产品">Products</a></li>
                     <li><a href="#contact" data-en="Contact" data-cn="联系我们">Contact</a></li>
+                    <li class="language-switcher">
+                        <button class="language-btn" id="language-btn">
+                            <i class="fas fa-globe"></i>
+                            <span>EN</span>
+                        </button>
+                        <div class="language-dropdown" id="language-dropdown">
+                            <a href="#" data-lang="en">English</a>
+                            <a href="#" data-lang="cn">中文</a>
+                        </div>
+                    </li>
                 </ul>
-                <div class="language-switcher">
-                    <button class="language-btn" id="language-btn">
-                        <i class="fas fa-globe"></i>
-                        <span>EN</span>
-                    </button>
-                    <div class="language-dropdown" id="language-dropdown">
-                        <a href="#" data-lang="en">English</a>
-                        <a href="#" data-lang="cn">中文</a>
-                    </div>
-                </div>
                 <div class="mobile-menu" id="mobile-menu">
                     <i class="fas fa-bars"></i>
                 </div>
