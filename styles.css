@@ -1147,3 +1147,26 @@ footer::before {
         font-size: 1.1rem;
     }
 }
+
+
+.product-images-scroll {
+    display: flex;
+    overflow-x: auto;
+    gap: 10px;
+    padding-bottom: 10px; /* 给滚动条留空间 */
+    scroll-snap-type: x mandatory;
+}
+
+.product-images-scroll img {
+    scroll-snap-align: start;
+    min-width: 80%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.product-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
